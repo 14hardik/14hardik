@@ -145,9 +145,9 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
             <!-- main-content -->
 
-            <h2 class="title">Fill the information of User</h2><br><br><br>
+            <h2 class="title" >Fill the information of User</h2><br><br><br>
 
-            <form action="./back/add_customer.php" class="form-horizontal" method="post">
+            <form action="./back/adduser"  class="form-horizontal" method="post">
 
                   <div class="container" id="emi">
 
@@ -157,13 +157,13 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     <div class="col">
 
-                                          <label>Customer Name :</label>
+                                          <label>User Name :</label>
 
                                     </div>
 
                                     <div class="col">
 
-                                          <input type="text" name="customer_name" class="form-control" placeholder="Enter Customer Name" required><br><br>
+                                          <input type="text" name="user_name" id='user_name' class="form-control" placeholder="Enter User Name" ><br><br>
 
                                     </div>
 
@@ -177,19 +177,21 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     <div class="col">
 
-                                          <input type="text" minlength="10" maxlength="10" name="contact_no" class="form-control" placeholder="Enter Contact Number" required><br><br>
+                                          <input type="text" minlength="10" maxlength="10" name="contact_no" id='contact_no' class="form-control" placeholder="Enter Contact Number" ><br><br>
 
                                     </div>
 
-
-
-
-
+                                    
+                                    
+                                    
+                                    
+                                    
                                     <div class="col">
-
+                                          
                                           <input type="submit" name="submit" class="submit" id="submit"></input>
-
+                                          
                                     </div>
+                                    <div id="return"></div>
 
                               </div>
 
@@ -201,8 +203,10 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
             </form>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            
+            <!-- custom javascript -->
+            <script src="./js/adduser.js"></script>
 
-           
 
 
       </body>
