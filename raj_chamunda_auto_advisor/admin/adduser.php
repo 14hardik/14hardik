@@ -23,7 +23,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <title>Dashboard</title>
+            <title>Add User</title>
 
             <link rel="icon" href="../Images/shiv-finance logo.png" type="image/x-icon">
 
@@ -147,7 +147,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
             <h2 class="title" >Fill the information of User</h2><br><br><br>
 
-            <form action="./back/adduser"  class="form-horizontal" method="post">
+            <form action="./back/adduser" id='form_data' class="form-horizontal" method="post" >
 
                   <div class="container" id="emi">
 
@@ -163,7 +163,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     <div class="col">
 
-                                          <input type="text" name="user_name" id='user_name' class="form-control" placeholder="Enter User Name" ><br><br>
+                                          <input type="text" name="user_name" id="user_name" class="form-control" placeholder="Enter User Name" ><br><br>
 
                                     </div>
 
@@ -177,7 +177,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     <div class="col">
 
-                                          <input type="text" minlength="10" maxlength="10" name="contact_no" id='contact_no' class="form-control" placeholder="Enter Contact Number" ><br><br>
+                                          <input type="text" minlength="10" maxlength="10" name="contact_no" id="contact_no" class="form-control" placeholder="Enter Contact Number" ><br><br>
 
                                     </div>
 
