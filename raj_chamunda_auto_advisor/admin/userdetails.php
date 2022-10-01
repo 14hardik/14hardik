@@ -50,7 +50,10 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                   <div class="sidebar-brand">
 
                         <!-- <img class="logo-img" src="../Images/shiv-finance logo.png" alt="align box" align="left"> -->
-                        <h1 class="logo-img">Raj chamunda auto adviser</h1>
+                        <h3 class="logo-img">Raj chamunda auto adviser</h3>
+                        <h3><span></span></h3>
+
+                        <hr>
 
 
                         
