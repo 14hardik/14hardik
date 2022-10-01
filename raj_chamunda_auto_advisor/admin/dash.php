@@ -110,6 +110,8 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                         </h2>
 
+  
+
 
 
                         <div class="user-wrapper">
@@ -118,10 +120,11 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                               <div>
 
-                                    <h4>Test</h4>
+                                    <h4><?php echo $username ?></h4>
+                              
 
 
-                                    <small>Admin</small>
+                                    <small>Super Admin</small>
 
 
 
@@ -143,13 +146,12 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                         <div class="cards">
 
-                              <a href="home_loan.php" class="card-single1">
+                              <a href="data.php?service_type='Insurance'" class="card-single1">
 
                                     <div>
-
-
                                           <h1>Insurance</h1>
                                           <span>12</span>
+                                          
 
                                     </div>
 
