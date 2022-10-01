@@ -35,11 +35,11 @@ if (isset($_POST['uid'])  && isset($_POST['service_type']) && isset($_POST['vehi
 
       if (mysqli_num_rows($ex) < 1) {
 
-            if (!empty($_POST['uid']) && !empty($_POST['service_type']) && !empty($_POST['vehicle_no']) && !empty($_POST['start_date']) && !empty($_POST['end_date'])  && empty($_FILES['doc'])) {
+            if (!empty($_POST['uid']) && !empty($_POST['service_type']) && !empty($_POST['vehicle_no']) && !empty($_POST['start_date']) && !empty($_POST['end_date']) ) {
 
                   $cmd = "INSERT INTO `vehicle_details` (`id`, `uid`, `v_id`, `vehicle_no`,
                                      `service_type`, `start_date`, `end_date`, `document`, `status`) VALUES 
-                                     (NULL, '$uid', '$v_id','$vehicle_no', '$service_type',  '$start_date', '$end_date', 'Not Set', '0')";
+                                     (NULL, '$uid', '$v_id','$vehicle_no', '$service_type',  '$start_date', '$end_date', 'Upload Document', '0')";
                   $result = mysqli_query($con, $cmd) or die(mysqli_error($con));
 
                   if ($result) {
@@ -50,8 +50,7 @@ if (isset($_POST['uid'])  && isset($_POST['service_type']) && isset($_POST['vehi
                               alert('Vehicle added Successfully... !');
                               // window.location = './addvehicle';
                               window.location.href = "./addvehicle.php?uid=<?php echo $uid; ?>";
-
-</script>
+                        </script>
 
                   <?php
 
@@ -62,7 +61,6 @@ if (isset($_POST['uid'])  && isset($_POST['service_type']) && isset($_POST['vehi
                         <script type="text/javascript">
                               alert('Failed... !');
                               window.location.href = "./addvehicle.php?uid=<?php echo $uid; ?>";
-
                         </script>
 
                         <?php
@@ -102,7 +100,6 @@ if (isset($_POST['uid'])  && isset($_POST['service_type']) && isset($_POST['vehi
                                           <script type="text/javascript">
                                                 alert('Vehicle added Successfully... !');
                                                 window.location.href = "./addvehicle.php?uid=<?php echo $uid; ?>";
-
                                           </script>
 
 
@@ -118,7 +115,6 @@ if (isset($_POST['uid'])  && isset($_POST['service_type']) && isset($_POST['vehi
                                           <script type="text/javascript">
                                                 alert('Failed... !');
                                                 window.location.href = "./addvehicle.php?uid=<?php echo $uid; ?>";
-
                                           </script>
 
                                     <?php
@@ -130,7 +126,6 @@ if (isset($_POST['uid'])  && isset($_POST['service_type']) && isset($_POST['vehi
                                     <script type="text/javascript">
                                           alert('Large file...!');
                                           window.location.href = "./addvehicle.php?uid=<?php echo $uid; ?>";
-
                                     </script>
 
                               <?php
@@ -141,7 +136,6 @@ if (isset($_POST['uid'])  && isset($_POST['service_type']) && isset($_POST['vehi
                               <script type="text/javascript">
                                     alert('Error...!');
                                     window.location.href = "./addvehicle.php?uid=<?php echo $uid; ?>";
-
                               </script>
 
                         <?php
@@ -152,7 +146,6 @@ if (isset($_POST['uid'])  && isset($_POST['service_type']) && isset($_POST['vehi
                         <script type="text/javascript">
                               alert('Invalid File Extension...!');
                               window.location.href = "./addvehicle.php?uid=<?php echo $uid; ?>";
-
                         </script>
 
             <?php
@@ -164,7 +157,6 @@ if (isset($_POST['uid'])  && isset($_POST['service_type']) && isset($_POST['vehi
             <script>
                   alert('This Data already exist...!');
                   window.location.href = "./addvehicle.php?uid=<?php echo $uid; ?>";
-
             </script>
 
 

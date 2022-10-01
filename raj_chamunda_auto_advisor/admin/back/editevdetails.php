@@ -2,7 +2,7 @@
 
 include_once("../db/connection.php");
 
-if (isset($_POST['uid']) && isset($_POST['v_id']) && isset($_POST['service_type']) && isset($_POST['vehicle_no']) && isset($_POST['start_date']) && isset($_POST['end_date']) || isset($_FILES['doc'])){
+if (isset($_POST['uid']) && isset($_POST['v_id']) && isset($_POST['service_type']) && isset($_POST['vehicle_no']) && isset($_POST['start_date']) && isset($_POST['end_date']) || isset($_FILES['doc'])) {
 
 
       $uid = mysqli_real_escape_string($con, $_POST['uid']);
@@ -24,23 +24,17 @@ if (isset($_POST['uid']) && isset($_POST['v_id']) && isset($_POST['service_type'
       $imgerror = $_FILES['doc']['error'];
       $imgtype = $_FILES['doc']['type'];
 
-      echo $img_name;
 
- if (!empty($_POST['uid']) && !empty($_POST['v_id']) && !empty($_POST['service_type']) && !empty($_POST['vehicle_no']) && !empty($_POST['start_date']) && !empty($_POST['end_date'])  && empty($_FILES['doc'])) {
 
-            ?>
-            <script>
+      if (!empty($_POST['uid']) && !empty($_POST['v_id']) && !empty($_POST['service_type']) && !empty($_POST['vehicle_no']) && !empty($_POST['start_date']) && !empty($_POST['end_date']) && $_FILES['doc']['name'] =='') {
 
-                  alert('here...');
-            </script>
-           
-            <?php
-            $cmd = "update vehicle_details set vehicle_no='$vehicle_no',service_type='$service_type' , start_date='$start_date',end_date='$end_date', document='Upload Document' where v_id='$v_id' ";
+    
+            $cmd = "update vehicle_details set vehicle_no='$vehicle_no',service_type='$service_type' , start_date='$start_date',end_date='$end_date' where v_id='$v_id' ";
             $result = mysqli_query($con, $cmd) or die(mysqli_error($con));
 
             if ($result) {
 
-?>
+            ?>
 
                   <script type="text/javascript">
                         alert('Vehicle Details Updated Successfully... !');
@@ -59,18 +53,12 @@ if (isset($_POST['uid']) && isset($_POST['v_id']) && isset($_POST['service_type'
                         window.location.href = "./editevdetails.php?v_id=<?php echo $v_id; ?>?uid=<?php echo $uid; ?>";
                   </script>
 
-                  <?php
+            <?php
 
             }
-      } else if (!empty($_POST['uid']) && !empty($_POST['v_id']) && !empty($_POST['service_type']) && !empty($_POST['vehicle_no']) && !empty($_POST['start_date']) && !empty($_POST['end_date'])  && !empty($_FILES['doc'])) {
+      } else if (!empty($_POST['uid']) && !empty($_POST['v_id']) && !empty($_POST['service_type']) && !empty($_POST['vehicle_no']) && !empty($_POST['start_date']) && !empty($_POST['end_date'])   && $_FILES['doc']['name'] !='') {
 
-            ?>
-            <script>
-
-                  alert('here...');
-            </script>
            
-            <?php
             $img_name = $_FILES['doc']['name'];
             $imgtmpname = $_FILES['doc']['tmp_name'];
             $imgsize = $_FILES['doc']['size'];
@@ -96,7 +84,7 @@ if (isset($_POST['uid']) && isset($_POST['v_id']) && isset($_POST['service_type'
 
                               if ($result) {
 
-                  ?>
+            ?>
 
                                     <script type="text/javascript">
                                           alert('Vehicle Details Updated Successfully... !');
@@ -146,7 +134,7 @@ if (isset($_POST['uid']) && isset($_POST['v_id']) && isset($_POST['service_type'
 
                   <script type="text/javascript">
                         alert('Invalid File Extension...!');
-                        window.location.href = "./editevdetails.php?v_id=<?php echo $v_id;?>?uid=<?php echo $uid;?>";
+                        window.location.href = "./editevdetails.php?v_id=<?php echo $v_id; ?>?uid=<?php echo $uid; ?>";
                   </script>
 
       <?php

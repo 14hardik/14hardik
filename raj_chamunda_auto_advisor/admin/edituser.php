@@ -91,7 +91,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     <li><a href="userdetails"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
 
-                                    <li><a href="expiry"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
+                                    <li><a href="expiredate"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
 
 
 
@@ -169,7 +169,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                               <nav aria-label="Breadcrumb" class="breadcrumb">
                                     <ol itemscope itemtype="https://schema.org/BreadcrumbList">
                                           <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                                <a href="dashboard.php" itemprop="item">
+                                                <a href="dash" itemprop="item">
                                                       <span itemprop="name">Dashboard</span>
                                                 </a>
                                                 <meta itemprop="position" content="1" />

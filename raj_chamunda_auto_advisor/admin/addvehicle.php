@@ -88,7 +88,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     <li><a href="userdetails"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
 
-                                    <li><a href="expiry"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
+                                    <li><a href="expiredate"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
 
                               </ul>
 
@@ -191,7 +191,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                               <nav aria-label="Breadcrumb" class="breadcrumb">
                                     <ol itemscope itemtype="https://schema.org/BreadcrumbList">
                                           <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                                <a href="dashboard.php" itemprop="item">
+                                                <a href="dash" itemprop="item">
                                                       <span itemprop="name">Dashboard</span>
                                                 </a>
                                                 <meta itemprop="position" content="1" />
@@ -345,18 +345,18 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                           <th>Index</th>
 
+                                          <th>Vehicle Number</th>
+
                                           <th>Type</th>
 
-                                          <th>Vehicle Number</th>
                                           <th>Start Date</th>
 
-                                          <th>Document</th>
                                           <th>End Date</th>
+                                          <th>Document</th>
 
                                           <th>Edit</th>
 
                                           <th>Delete</th>
-
                                     </tr>
 
                               </thead>
@@ -392,8 +392,8 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                                 <td><?php echo $count = $count + 1; ?></td>
 
-                                                <td><?php echo $service_type; ?></td>
                                                 <td><?php echo $vehicle_no; ?></td>
+                                                <td><?php echo $service_type; ?></td>
 
                                                 <td><?php echo $start_date; ?></td>
 
@@ -401,14 +401,18 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                                                 <td>
                                                       <?php
 
-                                                      if ($document === 'Not Set') {
-                                                            echo $document;
-                                                      } else {
-                                                           
+                                                      if ($document === 'Upload Document') {
+                                                            // echo $document;
                                                       ?>
-                                                            <img src="<?php echo $document; ?>" alt="" style="width:100%;height:100%;">
-                                                            <!-- <img src="<?php echo './images/documents/b7f239e5Doc.jpg'; ?>" alt="" style="width:20%;height:10%;"> -->
+                                                            <img src="<?php echo $document; ?>" alt="Upload Document" style="width:100%;height:100%;">
+                                                      <?php
+                                                      } else {
 
+                                                      ?>
+                                                            
+                                                            <a href="<?php echo $document; ?>" target="_blank">
+                                                                  <img src="<?php echo $document; ?>" alt="" style="width:100%;height:100%;">
+                                                            </a>
                                                       <?php
                                                       }
                                                       ?>

@@ -58,7 +58,7 @@ $(document).ready(function () {
           $("#load").load(" #load");
           setTimeout(function () {
             location.reload(true);
-          }, 500000);
+          }, 5000);
         },
       });
     }

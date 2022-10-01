@@ -58,9 +58,9 @@ $(document).ready(function () {
               $("#return").fadeOut("slow");
               $("#reset").show();
               $("#load").load(" #load");
-              setTimeout(function () {
-                location.reload(true);
-              }, 500000);
+              // setTimeout(function () {
+              //   location.reload(true);
+              // }, 500000);
             },
           });
         }
