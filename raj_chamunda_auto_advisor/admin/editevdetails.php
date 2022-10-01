@@ -1,19 +1,21 @@
 <?php
 session_start();
 include_once("./db/connection.php");
+
 $username = base64_decode($_SESSION['username']);
 $password = base64_decode($_SESSION['password']);
 
 if ($_SESSION['username'] && $_SESSION['password']) {
 
-      if (isset($_GET['uid'])) {
+      if (isset($_GET['v_id']) && isset($_GET['uid'])) {
+
+            $v_id = mysqli_real_escape_string($con, $_GET['v_id']);
+            $v_id = htmlspecialchars($v_id);
 
             $uid = mysqli_real_escape_string($con, $_GET['uid']);
             $uid = htmlspecialchars($uid);
 
-
-
-            $cmd = "select * from user_details where uid='$uid' ";
+            $cmd = "select * from vehicle_details where v_id='$v_id'";
 
             $result = mysqli_query($con, $cmd) or die(mysqli_error($con));
 
@@ -21,19 +23,23 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                   $id = $row['id'];
                   $uid = $row['uid'];
-
-                  $user_name = $row['user_name'];
-
-                  $contact_no = $row['contact_no'];
+                  $v_id = $row['v_id'];
+                  $vehicle_no = $row['vehicle_no'];
+                  $service_type = $row['service_type'];
+                  $start_date = $row['start_date'];
+                  $end_date = $row['end_date'];
+                  $document = $row['document'];
             }
 
-
 ?>
+
 
 
             <!DOCTYPE html>
 
             <html lang="en">
+
+
 
             <head>
 
@@ -43,7 +49,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-                  <title>Add Vehicle</title>
+                  <title>Edit Vehicle Details</title>
 
                   <link rel="icon" href="../Images/shiv-finance logo.png" type="image/x-icon">
 
@@ -90,13 +96,28 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     <li><a href="expiry"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
 
+
+
+
+
                               </ul>
 
 
 
                         </div>
 
+
+
+
+
+
+
+
+
+
                   </div>
+
+
 
                   <div class="main-content">
 
@@ -112,7 +133,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     </label>
 
-                                    Add Vehicle
+                                    Edite Vehicle Details
 
                               </h2>
 
@@ -146,46 +167,6 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                   </div>
 
-
-                  <!-- <form id="form" class="form-details" method="post">
-                  <div class="container">
-
-                        <div class="form-groups">
-
-                              <div class="rows">
-
-                                    <div class="col">
-
-                                          <label>Customer Name :</label>
-
-                                          <p><?php echo $user_name; ?></p>
-
-                                    </div><br>
-
-
-
-
-
-
-
-                                    <div class="col">
-
-                                          <label>Contact No. :</label>
-
-                                          <p><?php echo $contact_no; ?></p>
-
-                                    </div>
-                                    
-
-
-                              </div>
-
-                        </div>
-
-                  </div>
-            </form> -->
-
-
                   <div class="position">
                         <div class="container-breadcrumb">
                               <nav aria-label="Breadcrumb" class="breadcrumb">
@@ -197,38 +178,46 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                                                 <meta itemprop="position" content="1" />
                                           </li>
                                           <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                                <a href="userdetails.php" itemprop="item">
-                                                      <span itemprop="name">User Details</span>
+                                                <a href="addvehicle.php?uid=<?php echo $uid; ?>" itemprop="item">
+                                                      <span itemprop="name">Add Vehicle</span>
                                                 </a>
                                                 <meta itemprop="position" content="1" />
                                           </li>
-                                          <li> Add Vehicle</li>
+                                          <li> Edite Vehicle Details</li>
                                     </ol>
                               </nav>
                         </div>
                   </div>
 
-                  <!-- <h2 class="title" align="center">Fill the information of User</h2><br><br><br> -->
-                  <h2 class="title" align="center"></h2><br><br><br>
+
+
+                  <div id="return"></div>
+
+                  <!-- main-content -->
+
+                  <h2 class="title">
+                        <!-- Fill the information of User -->
+                  </h2><br><br><br>
 
                   <form onsubmit="return submitData(this);" id='vehicledata' class="form-horizontal" method="post" enctype="multipart/form-data">
 
-                        <div class="container">
+                        <div class="container" id="emi">
 
                               <div class="form-group">
 
                                     <div class="row">
                                           <input type="hidden" name="uid" id="uid" class="form-control" value="<?php echo $uid; ?>"><br><br>
+                                          <input type="hidden" name="v_id" id="v_id" class="form-control" value="<?php echo $v_id; ?>"><br><br>
 
                                           <div class="col">
 
-                                                <label>Select Type<sup style="color:white;">*</sup></label>
+                                                <label>Select Type <sup style="color:white;">*</sup></label>
 
                                                 <div class="col">
 
                                                       <select name="service_type" id="service_type">
 
-                                                            <option selected disabled>Select</option>
+                                                            <option><?php echo $service_type; ?></option>
                                                             <option value="Insurance">Insurance</option>
 
                                                             <option value="Tax">Tax</option>
@@ -256,7 +245,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                           <div class="col">
 
-                                                <input type="text" name="vehicle_no" id="vehicle_no" class="form-control" placeholder="Enter Vehicle No."><br><br>
+                                                <input type="text" name="vehicle_no" id="vehicle_no" class="form-control" placeholder="Enter Vehicle No." value="<?php echo $vehicle_no; ?>"><br><br>
 
                                           </div>
 
@@ -269,7 +258,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                           <div class="col">
 
-                                                <input type="date" name="start_date" id="start_date" class="form-control" placeholder="Starting Date "><br><br>
+                                                <input type="date" name="start_date" id="start_date" class="form-control" placeholder="Starting Date " value="<?php echo $start_date; ?>"><br><br>
 
                                           </div>
 
@@ -281,7 +270,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                           <div class="col">
 
-                                                <input type="date" name="end_date" id="end_date" class="form-control" placeholder="Ending Date "><br><br>
+                                                <input type="date" name="end_date" id="end_date" class="form-control" placeholder="Ending Date " value="<?php echo $end_date; ?>"><br><br>
 
                                           </div>
                                           <div class="col">
@@ -289,8 +278,13 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                                                 <label>Upload Document.</label>
 
                                           </div>
-
+                                          <br>
                                           <div class="col">
+
+                                                <!-- <input type="file" name="doc" id="doc" style="height:40px;color:white;" class="form-control" aria-describedby="helpId" /><br /> -->
+                                                <!-- <img src="<?php echo $document; ?>" alt="" style="width:50%;height:50%;"> -->
+                                                <img src="<?php echo $document; ?>" alt="" style="width:70%;height:150px;">
+
 
                                                 <input type="file" name="doc" id="doc" style="height:40px;color:white;" class="form-control" aria-describedby="helpId" /><br />
 
@@ -321,192 +315,17 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                               </div>
 
+
                         </div>
 
 
 
                   </form>
-
-                  <br>
-
-
-                  <div class="responsive-table">
-
-
-                        <table id="file_export" class="table table-striped table-bordered display">
-
-
-
-                              <thead class="thead">
-
-                                    <tr align="center">
-
-
-
-                                          <th>Index</th>
-
-                                          <th>Type</th>
-
-                                          <th>Vehicle Number</th>
-                                          <th>Start Date</th>
-
-                                          <th>Document</th>
-                                          <th>End Date</th>
-
-                                          <th>Edit</th>
-
-                                          <th>Delete</th>
-
-                                    </tr>
-
-                              </thead>
-
-                              <tbody id="tbody" align="center">
-
-                                    <?php
-
-                                    $count = 0;
-
-                                    $cmd = "select * from vehicle_details where uid='$uid'";
-
-                                    $result = mysqli_query($con, $cmd) or die(mysqli_error($con));
-
-                                    while ($row = mysqli_fetch_array($result)) {
-
-                                          $id = $row['id'];
-                                          $uid = $row['uid'];
-                                          $v_id = $row['v_id'];
-                                          $vehicle_no = $row['vehicle_no'];
-                                          $service_type = $row['service_type'];
-                                          $start_date = $row['start_date'];
-                                          $end_date = $row['end_date'];
-                                          $document = $row['document'];
-
-                                    ?>
-
-
-
-                                          <tr id="delete<?php echo $row['id'] ?>">
-
-
-
-                                                <td><?php echo $count = $count + 1; ?></td>
-
-                                                <td><?php echo $service_type; ?></td>
-                                                <td><?php echo $vehicle_no; ?></td>
-
-                                                <td><?php echo $start_date; ?></td>
-
-                                                <td><?php echo $end_date; ?></td>
-                                                <td>
-                                                      <?php
-
-                                                      if ($document === 'Not Set') {
-                                                            echo $document;
-                                                      } else {
-                                                           
-                                                      ?>
-                                                            <img src="<?php echo $document; ?>" alt="" style="width:100%;height:100%;">
-                                                            <!-- <img src="<?php echo './images/documents/b7f239e5Doc.jpg'; ?>" alt="" style="width:20%;height:10%;"> -->
-
-                                                      <?php
-                                                      }
-                                                      ?>
-                                                </td>
-
-
-
-
-
-
-
-
-
-
-                                                <td>
-
-                                                      <form class="edit" action="editevdetails.php" method="get">
-
-                                                            <input type="hidden" name="v_id" id="v_id" value="<?php echo $v_id; ?>">
-                                                            <input type="hidden" name="uid" id="uid" value="<?php echo $uid; ?>">
-
-                                                            <button type="submit" id="action" class="update">Edit</button>
-
-                                                      </form>
-
-                                                </td>
-
-
-
-
-                                                <td>
-
-
-
-                                                      <div id="return"></div>
-
-                                                      <center>
-
-                                                            <button type="button" class="delete" onclick="removeVehicle(<?php echo $row['id']; ?>)">Delete</button>
-
-                                                      </center>
-
-                                                </td>
-
-                                          </tr>
-
-
-
-                                    <?php
-
-
-
-                                    }
-
-                                    ?>
-
-
-
-
-
-                              </tbody>
-
-                        </table>
-
-                        <div id="output"></div>
-
-
-
-                  </div>
-
-                  <script src="./../assets/libs/jquery/dist/jquery.min.js"></script>
-
-                  <script src="./../assets/extra-libs/DataTables/datatables.min.js"></script>
-
-                  <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
-
-                  <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
-
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-
-                  <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
-
-                  <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
-
-                  <script src="./../dist/js/pages/datatable/datatable-advanced.init.js"></script>
-
-
-
+                  <div id="return"></div>
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
                   <!-- custom javascript -->
-                  <script src="./js/addvehicle.js"></script>
-
-                  <script src="./js/removevehicle.js"></script>
-
+                  <script src="./js/editevdetails.js"></script>
 
 
 
@@ -515,12 +334,12 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
 
             </html>
+
       <?php
       } else {
       ?>
             <script>
                   alert('Page not found!');
-                  window.location = './userdetails';
             </script>
 <?php
       }

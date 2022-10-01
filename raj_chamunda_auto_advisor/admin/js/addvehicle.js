@@ -2,6 +2,8 @@ $(document).ready(function () {
   $("#submit").click(function (event) {
     event.preventDefault();
 
+    var form = $("#vehicledata")[0];
+    var data = new FormData(form);
     var uid = $("#uid").val();
     var service_type = $("#service_type").val();
     var vehicle_no = $("#vehicle_no").val();
@@ -15,7 +17,13 @@ $(document).ready(function () {
     // var vehicle_patten = /^[a-zA-Z]+ [a-zA-Z]+$/;
     // $vehicle_patten = "/^[a-zA-z]*$/";
 
-    if (uid == "" || service_type == "" || vehicle_no == "" || start_date == "" || end_date == "") {
+    if (
+      uid == "" ||
+      service_type == "" ||
+      vehicle_no == "" ||
+      start_date == "" ||
+      end_date == ""
+    ) {
       $("#return").html(
         '<h4 style="color:black;font-size:20px;font-weight:bold;margin-top:15px">Please Enter All Required Fields</h4>'
       );
@@ -34,7 +42,14 @@ $(document).ready(function () {
       $.ajax({
         url: "./back/addvehicle.php",
         method: "POST",
-        data: $("#vehicledata").serialize(),
+        // data: $("#vehicledata").serialize(),
+        data: data,
+        contentType: false,
+        cache: false,
+        processData: false,
+        beforeSend: function () {
+          $("#submit").hide();
+        },
         success: function (data) {
           $("form").trigger("reset");
           $("#return").fadeIn().html(data);
@@ -43,7 +58,7 @@ $(document).ready(function () {
           $("#load").load(" #load");
           setTimeout(function () {
             location.reload(true);
-          }, 5000);
+          }, 500000);
         },
       });
     }
