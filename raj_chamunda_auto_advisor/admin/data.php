@@ -1,9 +1,11 @@
 <?php
 session_start();
+error_reporting(0);
 include_once("./db/connection.php");
 
 $username = base64_decode($_SESSION['username']);
 $password = base64_decode($_SESSION['password']);
+$serviceType = $_GET[service_type];
 
 if ($_SESSION['username'] && $_SESSION['password']) {
 
@@ -49,14 +51,11 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                   <div class="sidebar-brand">
 
-                        <!-- <img class="logo-img" src="../Images/shiv-finance logo.png" alt="align box" align="left"> -->
-                        <h3 class="logo-img">Raj chamunda auto adviser</h3>
+                    <h3 class="logo-img">Raj chamunda auto adviser</h3>
+
                         <h3><span></span></h3>
 
                         <hr>
-
-
-                        
 
                   </div>
 
@@ -64,13 +63,13 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                         <ul>
 
-                              <li><a href="dash"><span class="fa fa-dashboard"></span><span>Dashboard</span></a></li>
+                              <li><a href="dash" class="active"><span class="fa fa-dashboard"></span><span>Dashboard</span></a></li>
 
                               <li><a href="adduser"><span class="fa fa-user-plus"></span><span>Add User</span></a></li>
 
-                              <li><a href="userdetails" class="active"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
+                              <li><a href="userdetails"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
 
-                              <li><a href="expiredate"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
+                              <li><a href="expiry"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
 
 
 
@@ -81,15 +80,6 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
 
                   </div>
-
-
-
-
-
-
-
-
-
 
             </div>
 
@@ -115,7 +105,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                         <div class="user-wrapper">
 
-                              <li class="user"><img class="" src="../Images/default-user.jpg" width="40px" height="40px" alt=""></li>
+                              <!-- <li class="user"><img class="" src="../Images/default-user.jpg" width="40px" height="40px" alt=""></li> -->
 
                               <div>
 
@@ -145,7 +135,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                               <nav aria-label="Breadcrumb" class="breadcrumb">
                                     <ol itemscope itemtype="https://schema.org/BreadcrumbList">
                                           <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                                <a href="dash" itemprop="item">
+                                                <a href="dashboard.php" itemprop="item">
                                                       <span itemprop="name">Dashboard</span>
                                                 </a>
                                                 <meta itemprop="position" content="1" />
@@ -193,7 +183,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     $count = 0;
 
-                                    $cmd = "select * from user_details  ";
+                                    $cmd = "select * from vehicle_details where service_type='$serviceType'";
 
                                     $result = mysqli_query($con, $cmd) or die(mysqli_error($con));
 
@@ -235,7 +225,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                                             <input type="hidden" name="uid" id="uid" value="<?php echo $uid; ?>">
 
-                                                            <button type="submit" id="action" class="update">Edit</button>
+                                                            <button type="submit"  id="action" class="update">Edit</button>
 
                                                       </form>
 
@@ -247,12 +237,12 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                                             <input type="hidden" name="uid" id="uid" value="<?php echo $uid; ?>">
 
+                                                           
+
+                                                            <button type="submit"  id="add" class="update">Add</button>
 
 
-                                                            <button type="submit" id="add" class="update">Add</button>
-
-
-
+                                                           
 
                                                       </form>
 

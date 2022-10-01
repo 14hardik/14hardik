@@ -13,7 +13,9 @@ $(document).ready(function () {
     console.log(vehicle_no);
     console.log(doc);
 
-    var vehicle_patten = /^[A-Z0-9]*$/;
+    var vehicle_patten = /^[A-Z|a-z]{2}\s?[0-9]{1,2}\s?[A-Z|a-z]{0,3}\s?[0-9]{4}$/
+
+
     // var vehicle_patten = /^[a-zA-Z]+ [a-zA-Z]+$/;
     // $vehicle_patten = "/^[a-zA-z]*$/";
 
@@ -25,7 +27,7 @@ $(document).ready(function () {
       end_date == ""
     ) {
       $("#return").html(
-        '<h4 style="color:black;font-size:20px;font-weight:bold;margin-top:15px">Please Enter All Required Fields</h4>'
+        '<h4 style="color:red;font-size:20px;font-weight:bold;margin-top:15px">Please Enter All Required Fields</h4>'
       );
       setTimeout(function () {
         location.reload(true);
