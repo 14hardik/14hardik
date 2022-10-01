@@ -3,7 +3,7 @@ session_start();
 include '../db/connection.php';
 date_default_timezone_set("Asia/Kolkata");
 
-
+//test
 if (isset($_POST['submit'])) {
       if (!empty($_POST['uname']) && !empty($_POST['password'])) {
             $uname = mysqli_real_escape_string($con, $_POST['uname']);
