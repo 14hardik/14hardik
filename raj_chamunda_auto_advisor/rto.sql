@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2022 at 10:44 AM
+-- Generation Time: Oct 01, 2022 at 04:16 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -84,8 +84,10 @@ CREATE TABLE `vehicle_details` (
 --
 
 INSERT INTO `vehicle_details` (`id`, `uid`, `v_id`, `vehicle_no`, `service_type`, `start_date`, `end_date`, `document`, `status`) VALUES
-(1, 'vfvfvf', '', '', '', '0000-00-00', '0000-00-00', '', 0),
-(2, '6335dc63bf14f', '573faab3', 'FGFG67GHJJ', 'Insurance', '2022-10-01', '2022-11-01', 'Not Set', 0);
+(3, '6335dc63bf14f', '691569a5', 'FGFG67GHJJ', 'Insurance', '2022-10-01', '2022-10-31', 'Not Set', 0),
+(4, '6335dc63bf14f', 'a36d5feb', 'FGFG67GHJJ', 'Insurance', '2022-10-02', '2022-10-31', './images/documents/a36d5feb_Doc.jpg', 0),
+(8, '6335dc63bf14f', 'b7f239e5', 'FGFG67GHJJ', 'Insurance', '2022-10-01', '2022-10-30', './images/documents/b7f239e5_Doc.jpg', 0),
+(10, '6335dc63bf14f', 'f952aa23', 'FGFG67GHJJ', 'Permit', '2022-10-01', '2022-10-31', './images/documents/f952aa23_Doc.jpg', 0);
 
 --
 -- Indexes for dumped tables
@@ -123,13 +125,13 @@ ALTER TABLE `admin_data`
 -- AUTO_INCREMENT for table `user_details`
 --
 ALTER TABLE `user_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `vehicle_details`
 --
 ALTER TABLE `vehicle_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
