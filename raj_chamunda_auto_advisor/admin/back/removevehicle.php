@@ -5,25 +5,18 @@ if (isset($_POST['id'])) {
      $id = mysqli_real_escape_string($con, $_POST['id']);
      $id = htmlspecialchars($id);
 
-     $sel = "select * from user_details where id='$id'";
-     $result = mysqli_query($con, $sel) or die(mysqli_error($con));
+     
 
-     while ($row = mysqli_fetch_array($result)) {
-
-           $uid = $row['uid'];
-          
-     }
-
-     $data = "delete from user_details where id='$id'";
+     $data = "delete from vehicle_details where id='$id'";
      $result = mysqli_query($con, $data) or die(mysqli_error($con)); 
 
-     $q = "delete from vehicle_details where uid='$uid'";
+     $q = "delete from vehicle_details where id='$id'";
      $sql = mysqli_query($con, $q) or die(mysqli_error($con)); 
 
-     if ($result ) {
+     if ($result && $sql) {
 ?>
           <script>
-                alert('User Deleted...!');
+                alert('Vehicle Deleted...!');
           </script>
      <?php
      } else {

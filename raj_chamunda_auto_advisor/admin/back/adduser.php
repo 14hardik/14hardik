@@ -9,8 +9,7 @@ if (isset($_POST['user_name']) && isset($_POST['contact_no'])) {
      $contact_no = mysqli_real_escape_string($con, $_POST['contact_no']);
      $contact_no = htmlspecialchars($contact_no);
      $user_id = uniqid();
-     // echo "///////////////////////////////////////////////////////////". $user_name;
-
+    
      $sel = "select * from user_details where user_name='$user_name' and contact_no='$contact_no'";
      $ex = mysqli_query($con, $sel) or die(mysqli_error($con));
 
@@ -27,7 +26,7 @@ if (isset($_POST['user_name']) && isset($_POST['contact_no'])) {
 
           <script type="text/javascript">
                alert('User added Successfully... !');
-               window.location = './dash';
+               window.location = './userdetails';
           </script>
 
         
@@ -42,7 +41,7 @@ if (isset($_POST['user_name']) && isset($_POST['contact_no'])) {
 
           <script type="text/javascript">
                alert('Failed... !');
-               window.location = './dash';
+               window.location = './adduser';
           </script>
 
 <?php
@@ -54,7 +53,7 @@ if (isset($_POST['user_name']) && isset($_POST['contact_no'])) {
 
      <script>
            alert('This User is already exist...!');
-           window.location = './dash';
+           window.location = './adduser';
      </script>
 
 
@@ -65,6 +64,7 @@ else{
      ?>
      <script>
           alert('Somthing Went Wrong...!');
+          window.location = './adduser';
      </script>
 <?php
 }
