@@ -49,7 +49,9 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                   <div class="sidebar-brand">
 
-                        <img class="logo-img" src="../Images/shiv-finance logo.png" alt="align box" align="left">
+                        <!-- <img class="logo-img" src="../Images/shiv-finance logo.png" alt="Raj chamunda auto adviser" align="left"> -->
+                        <h1 class="logo-img">Raj chamunda auto adviser</h1>
+
 
                         <h3><span></span></h3>
 
@@ -146,8 +148,8 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                                     <div>
 
 
-                                          <span>Test</span>
-                                          <h1>abc</h1>
+                                          <h1>Insurance</h1>
+                                          <span>12</span>
 
                                     </div>
 
@@ -163,9 +165,9 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     <div>
 
-                                          <h1></h1>
+                                          <h1>Tax</h1>
 
-                                          <span>Test</span>
+                                          <span>5</span>
 
                                     </div>
 
@@ -177,51 +179,43 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     <div>
 
-                                          <h1></h1>
+                                          <h1>PUC</h1>
 
-                                          <span>Test</span>
+                                          <span>6</span>
 
                                     </div>
 
                               </a>
+
+                        
 
                               <a href="top-up_loan.php" class="card-single4">
 
                                     <div>
 
-                                          <span>Test</span>
-                                          <h1>abc</h1>
+                                          <h1>Parsing</h1>
+                                          <span>8</span>
 
                                     </div>
 
                               </a>
+                           
 
-                              <a href="personal_loan.php" class="card-single5">
-
-                                    <div>
-
-                                          <h1></h1>
-
-                                          <span>Test</span>
-
-                                    </div>
-
-                              </a>
-
-                              <a href="micro_loan.php" class="card-single6">
-
-                                    <div>
-
-                                          <h1></h1>
-
-                                          <span>Test</span>
-
-                                    </div>
-                              </a>
-
-
-                        </div>
-
+                                    
+                                    <a href="personal_loan.php" class="card-single5">
+                                          
+                                          <div>
+                                                
+                                                <h1>Permit</h1>
+                                                
+                                                <span>9</span>
+                                                
+                                          </div>
+                                          
+                                    </a>
+                                    
+                          
+                           
 
             </div>
 

@@ -317,6 +317,8 @@
         color: #f0f0f0;
     }
 
+
+
     .card-single4 {
         display: flex;
         justify-content: space-between;
@@ -775,6 +777,7 @@
 
     .logo-img {
         position: relative;
+        font-size: 10;
         margin: 0 1px 1px -25px;
     }
 

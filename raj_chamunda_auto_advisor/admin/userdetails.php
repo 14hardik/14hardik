@@ -137,7 +137,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
 
 
-                  <div class="position">
+                  <!-- <div class="position">
                         <div class="container-breadcrumb">
                               <nav aria-label="Breadcrumb" class="breadcrumb">
                                     <ol itemscope itemtype="https://schema.org/BreadcrumbList">
@@ -151,7 +151,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                                     </ol>
                               </nav>
                         </div>
-                  </div>
+                  </div> -->
 
                   <div id="return"></div>
 
