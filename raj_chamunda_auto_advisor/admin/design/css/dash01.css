@@ -1561,6 +1561,7 @@
         margin: 0;
         padding-left: 0;
         list-style: none;
+        /* margin-left:50%; */
     }
 
     .breadcrumb li {
@@ -1926,7 +1927,7 @@
 
     /* table css*/
     .responsive-table {
-        margin-left: 24%;
+        margin-left: 25%;
         margin-top: 30px;
         width: 75%;
         border-collapse: collapse;
@@ -1960,6 +1961,7 @@
     tbody tr td button.update {
         background-color: #4282be;
         color: white;
+        /* width: 100px; */
     }
 
     tbody tr td button.paid {
@@ -2251,7 +2253,7 @@
     }
 
     #file_export_filter input.form-control {
-        width: 23%;
+        width: 24.3%;
         height: 35px;
         /*border: 1px solid black;*/
         /*float: right;*/
@@ -2299,6 +2301,7 @@
         margin: 0;
         padding-left: 0;
         list-style: none;
+        /* margin-left: 20%; */
     }
 
     .breadcrumb li {
@@ -2336,9 +2339,9 @@
     }
 
     .container-breadcrumb {
-        width: 50%;
+        width: auto;
         margin-top: 20px;
-        margin-left: 0%;
+        margin-left: -25%;
     }
 
     /*#nav-toggle:checked~.position {    margin-left: 400px;    width: 70%;}*/

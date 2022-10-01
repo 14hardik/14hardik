@@ -61,11 +61,11 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                         <ul>
 
-                              <li><a href="dash" class="active"><span class="fa fa-dashboard"></span><span>Dashboard</span></a></li>
+                              <li><a href="dash"><span class="fa fa-dashboard"></span><span>Dashboard</span></a></li>
 
                               <li><a href="adduser"><span class="fa fa-user-plus"></span><span>Add User</span></a></li>
 
-                              <li><a href="userdetails"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
+                              <li><a href="userdetails"  class="active"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
 
                               <li><a href="expiry"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
 
@@ -104,7 +104,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                               </label>
 
-                              Dashboard
+                              User Details
 
                         </h2>
 
@@ -155,7 +155,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                   <div id="return"></div>
 
-                  <div class="responsive-table">
+                  <div class="responsive-table1">
 
 
                         <table id="file_export" class="table table-striped table-bordered display">
@@ -165,7 +165,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                               <thead class="thead">
 
                                     <tr align="center">
-                                  
+
 
 
                                           <th>Index</th>
@@ -174,7 +174,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                           <th>Contact No.</th>
 
-                                          <th>Edit</th>
+                                          <th>Edit Details</th>
 
                                           <th>Add Vehicle</th>
 
@@ -197,7 +197,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                                     while ($row = mysqli_fetch_array($result)) {
 
                                           $id = $row['id'];
-                                          $uid = $row['uid']; 
+                                          $uid = $row['uid'];
 
                                           $user_name = $row['user_name'];
 
@@ -211,7 +211,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                           <tr id="delete<?php echo $row['id'] ?>">
 
-                                       
+
 
                                                 <td><?php echo $count = $count + 1; ?></td>
 
@@ -228,16 +228,11 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                                 <td>
 
-                                                      <form class="edit" action="editCtmr.php" method="get">
+                                                      <form class="edit" action="edituser.php" method="get">
 
-                                                            <input type="hidden" name="contact_no" id="contact_no" value="<?php echo $contact_no; ?>">
-                                                            <input type="hidden" name="cstid" id="cstid" value="<?php echo $cstid; ?>">
+                                                            <input type="hidden" name="uid" id="uid" value="<?php echo $uid; ?>">
 
-                                                            <!-- <center> -->
-
-                                                            <button id="action" class="update">Action</button>
-
-                                                            <!-- </center> -->
+                                                            <button type="submit"  id="action" class="update">Edit</button>
 
                                                       </form>
 
@@ -245,16 +240,16 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                                 <td>
 
-                                                      <form class="edit" action="editCtmr.php" method="get">
+                                                      <form class="edit" action="addvehicle.php" method="get">
 
-                                                            <input type="hidden" name="contact_no" id="contact_no" value="<?php echo $contact_no; ?>">
-                                                            <input type="hidden" name="cstid" id="cstid" value="<?php echo $cstid; ?>">
+                                                            <input type="hidden" name="uid" id="uid" value="<?php echo $uid; ?>">
 
-                                                            <!-- <center> -->
+                                                           
 
-                                                            <button id="action" class="update">Add</button>
+                                                            <button type="submit"  id="add" class="update">Add</button>
 
-                                                            <!-- </center> -->
+
+                                                           
 
                                                       </form>
 
