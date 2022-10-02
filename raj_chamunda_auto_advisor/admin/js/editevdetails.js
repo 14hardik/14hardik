@@ -14,9 +14,8 @@ $(document).ready(function () {
     console.log(vehicle_no);
     console.log(doc);
 
-    // var vehicle_patten =
-      // /^[A-Z|a-z]{2}\s?[0-9]{1,2}\s?[A-Z|a-z]{0,3}\s?[0-9]{4}$/;
-    var vehicle_patten = /^[A-Z0-9]*$/;
+    var vehicle_patten =/^[A-Z|a-z]{2}\s?[0-9]{1,2}\s?[A-Z|a-z]{0,3}\s?[0-9]{4}$/;
+    // var vehicle_patten = /^[A-Z0-9]*$/;
     // var vehicle_patten = /^[a-zA-Z]+ [a-zA-Z]+$/;
     // $vehicle_patten = "/^[a-zA-z]*$/";
 

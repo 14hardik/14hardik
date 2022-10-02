@@ -124,7 +124,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                               
 
 
-                                    <small>Super Admin</small>
+                                    <small>Admin</small>
 
 
 

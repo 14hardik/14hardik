@@ -56,12 +56,10 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                         <div class="sidebar-brand">
 
-<<<<<<< HEAD
+
                   <h3 class="logo-img">Raj chamunda auto adviser</h3>
-                        
-=======
-                              <img class="logo-img" src="../Images/shiv-finance logo.png" alt="align box" align="left">
->>>>>>> 3c700db3eabb968a57313db30b23461a677a6ebc
+            
+                           
 
                               <h3><span></span></h3>
 
@@ -126,7 +124,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     <div>
 
-                                          <h4>Test</h4>
+                                          <h4><?php echo $username ?></h4>
 
 
                                           <small>Admin</small>
