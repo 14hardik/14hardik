@@ -39,7 +39,8 @@ if (isset($_POST['uid']) && isset($_POST['v_id']) && isset($_POST['service_type'
                   <script type="text/javascript">
                         alert('Vehicle Details Updated Successfully... !');
                         // window.location = './addvehicle';
-                        window.location.href = "./addvehicle.php?uid=<?php echo $uid; ?>";
+                        // window.location.href = "./addvehicle.php?uid=<?php echo $uid; ?>";
+                        history.go(-1)
                   </script>
 
             <?php
@@ -88,7 +89,8 @@ if (isset($_POST['uid']) && isset($_POST['v_id']) && isset($_POST['service_type'
 
                                     <script type="text/javascript">
                                           alert('Vehicle Details Updated Successfully... !');
-                                          window.location.href = "./addvehicle.php?uid=<?php echo $uid; ?>";
+                                          // window.location.href = "./addvehicle.php?uid=<?php echo $uid; ?>";
+                                          history.go(-1)
                                     </script>
 
 

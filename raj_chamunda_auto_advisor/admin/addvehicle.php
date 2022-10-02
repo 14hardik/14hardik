@@ -90,7 +90,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     <li><a href="userdetails"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
 
-                                    <li><a href="expiredate"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
+                                    <li><a href="select"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
 
                               </ul>
 
@@ -345,11 +345,13 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     <tr align="center">
 
-
+                                          <th style="display:none;">ID</th>
 
                                           <th>Index</th>
+                                          <th>UserName</th>
+                                          <th>Contact No.</th>
 
-                                          <th>Vehicle Number</th>
+                                          <th>Vehicle No.</th>
 
                                           <th>Type</th>
 
@@ -371,7 +373,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     $count = 0;
 
-                                    $cmd = "select * from vehicle_details where uid='$uid'";
+                                    $cmd = "select * from vehicle_details,user_details where  user_details.uid='$uid' and vehicle_details.uid='$uid' ";
 
                                     $result = mysqli_query($con, $cmd) or die(mysqli_error($con));
 
@@ -379,6 +381,8 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                           $id = $row['id'];
                                           $uid = $row['uid'];
+
+                                          $user_name = $row['user_name'];
                                           $v_id = $row['v_id'];
                                           $vehicle_no = $row['vehicle_no'];
                                           $service_type = $row['service_type'];
@@ -386,22 +390,31 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                                           $end_date = $row['end_date'];
                                           $document = $row['document'];
 
+                                          $s_d = strtotime($start_date);
+                                          $e_d = strtotime($end_date);
+
+                                          $new_sdate = date('d/m/Y', $s_d);
+
+                                          $new_edate =  date('d/m/Y', $e_d);
+                                        
+
                                     ?>
 
 
 
-                                          <tr id="delete<?php echo $row['id'] ?>">
+                                          <tr id="delete<?php echo $row['v_id'] ?>">
 
-
+                                                <td style="display:none;"><?php echo $v_id; ?></td>
 
                                                 <td><?php echo $count = $count + 1; ?></td>
-
+                                                <td><?php echo $user_name; ?></td>
+                                                <td><?php echo $contact_no; ?></td>
                                                 <td><?php echo $vehicle_no; ?></td>
                                                 <td><?php echo $service_type; ?></td>
 
-                                                <td><?php echo $start_date; ?></td>
+                                                <td><?php echo $new_sdate; ?></td>
 
-                                                <td><?php echo $end_date; ?></td>
+                                                <td><?php echo $new_edate; ?></td>
                                                 <td>
                                                       <?php
 
@@ -453,11 +466,18 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                                       <div id="return"></div>
 
-                                                      <center>
+                                                      <!-- <center>
 
-                                                            <button type="button" class="delete" onclick="removeVehicle(<?php echo $row['id']; ?>)">Delete</button>
+                                                            <button type="button" class="delete" onclick="removeVehicle(<?php echo $row['v_id'] ?>)">Delete</button>
 
-                                                      </center>
+                                                      </center> -->
+
+                                                      <form class="edit" action="./back/removevehicle.php" method="get">
+                                                            <input type="hidden" name="v_id" v_id="v_id" value="<?php echo $v_id; ?>">
+                                                            <center>
+                                                                  <button type="submit" class="delete">Delete</button>
+                                                            </center>
+                                                      </form>
 
                                                 </td>
 
@@ -513,7 +533,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                   <!-- custom javascript -->
                   <script src="./js/addvehicle.js"></script>
 
-                  <script src="./js/removevehicle.js"></script>
+                  <!-- <script src="./js/removevehicle.js"></script> -->
 
 
 
@@ -533,6 +553,6 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 <?php
       }
 } else {
-      echo header('Location: ../login.php');
+      echo header('Location:./account');
 }
 ?>

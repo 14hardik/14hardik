@@ -73,7 +73,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                         <div class="sidebar-brand">
 
-                        <h3 class="logo-img">Raj chamunda auto adviser</h3>
+                              <h3 class="logo-img">Raj chamunda auto adviser</h3>
                               <h3><span></span></h3>
 
                               <hr>
@@ -90,7 +90,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     <li><a href="userdetails"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
 
-                                    <li><a href="expiredate"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
+                                    <li><a href="select"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
 
 
 
@@ -185,7 +185,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                         </div>
                   </div>
 
-                  
+
 
                   <div id="return"></div>
 
@@ -202,11 +202,11 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                               <div class="form-group">
 
                                     <div class="row">
-                                    <input type="hidden" name="uid" id="uid" class="form-control" value="<?php echo $uid; ?>"><br><br>
+                                          <input type="hidden" name="uid" id="uid" class="form-control" value="<?php echo $uid; ?>"><br><br>
 
                                           <div class="col">
 
-                                                <label>User Name :</label>
+                                                <label>User Name<sup style="color:white;">*</sup></label>
 
                                           </div>
 
@@ -220,7 +220,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                           <div class="col">
 
-                                                <label>Contact no. :</label>
+                                                <label>Contact no<sup style="color:white;">*</sup></label>
 
                                           </div>
 
@@ -231,7 +231,14 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                                           </div>
 
 
+                                          <!-- <br> -->
+                                          <small style="color:white; font-size:1rem;font-weight:bold;">* Fields are
+                                                Mandatory</small>
 
+
+                                          <!-- <br> -->
+                                          <!-- <hr> -->
+                                          <!-- <br> -->
 
 
 

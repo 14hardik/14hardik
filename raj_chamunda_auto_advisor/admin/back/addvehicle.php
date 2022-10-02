@@ -2,7 +2,7 @@
 
 include_once("../db/connection.php");
 
-if (isset($_POST['uid'])  && isset($_POST['service_type']) && isset($_POST['vehicle_no']) && isset($_POST['start_date']) && isset($_POST['end_date']) || isset($_FILES['doc'])) {
+if (isset($_POST['uid']) && isset($_POST['service_type']) && isset($_POST['vehicle_no']) && isset($_POST['start_date']) && isset($_POST['end_date']) || isset($_FILES['doc'])) {
 
 
       $uid = mysqli_real_escape_string($con, $_POST['uid']);
@@ -35,7 +35,7 @@ if (isset($_POST['uid'])  && isset($_POST['service_type']) && isset($_POST['vehi
 
       if (mysqli_num_rows($ex) < 1) {
 
-            if (!empty($_POST['uid']) && !empty($_POST['service_type']) && !empty($_POST['vehicle_no']) && !empty($_POST['start_date']) && !empty($_POST['end_date']) ) {
+            if (!empty($_POST['uid']) && !empty($_POST['service_type']) && !empty($_POST['vehicle_no']) && !empty($_POST['start_date']) && !empty($_POST['end_date']) && $_FILES['doc']['name'] =='') {
 
                   $cmd = "INSERT INTO `vehicle_details` (`id`, `uid`, `v_id`, `vehicle_no`,
                                      `service_type`, `start_date`, `end_date`, `document`, `status`) VALUES 
@@ -66,7 +66,7 @@ if (isset($_POST['uid'])  && isset($_POST['service_type']) && isset($_POST['vehi
                         <?php
 
                   }
-            } else if (!empty($_POST['uid']) && !empty($_POST['service_type']) && !empty($_POST['vehicle_no']) && !empty($_POST['start_date']) && !empty($_POST['end_date'])  && !empty($_FILES['doc'])) {
+            } else if (!empty($_POST['uid']) && !empty($_POST['service_type']) && !empty($_POST['vehicle_no']) && !empty($_POST['start_date']) && !empty($_POST['end_date'])   && $_FILES['doc']['name'] !='') {
 
                   $img_name = $_FILES['doc']['name'];
                   $imgtmpname = $_FILES['doc']['tmp_name'];

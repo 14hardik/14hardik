@@ -68,7 +68,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                               <li><a href="userdetails"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
 
-                              <li><a href="expiredate"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
+                              <li><a href="select"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
 
 
 

@@ -1,18 +1,13 @@
 <?php
 include("../db/connection.php");
+$v_id = base64_decode($_SESSION['v_id']);
+echo '////////////////////////'.$v_id;
 
 if (isset($_POST['id'])) {
      $id = mysqli_real_escape_string($con, $_POST['id']);
      $id = htmlspecialchars($id);
 
-     $sel = "select * from user_details where id='$id'";
-     $result = mysqli_query($con, $sel) or die(mysqli_error($con));
-
-     while ($row = mysqli_fetch_array($result)) {
-          
-          $uid = $row['uid'];
-          // $v_id = $row['v_id'];
-     }
+    
 
      $sel1 = "select * from vehicle_details where v_id='$v_id'";
      $result1 = mysqli_query($con, $sel1) or die(mysqli_error($con));
