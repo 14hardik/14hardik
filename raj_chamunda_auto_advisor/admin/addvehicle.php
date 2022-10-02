@@ -345,8 +345,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     <tr align="center">
 
-                                          <th style="display:none;">ID</th>
-
+                                        
                                           <th>Index</th>
                                           <th>UserName</th>
                                           <th>Contact No.</th>
@@ -404,7 +403,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                           <tr id="delete<?php echo $row['v_id'] ?>">
 
-                                                <td style="display:none;"><?php echo $v_id; ?></td>
+                                               
 
                                                 <td><?php echo $count = $count + 1; ?></td>
                                                 <td><?php echo $user_name; ?></td>
@@ -466,11 +465,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                                       <div id="return"></div>
 
-                                                      <!-- <center>
-
-                                                            <button type="button" class="delete" onclick="removeVehicle(<?php echo $row['v_id'] ?>)">Delete</button>
-
-                                                      </center> -->
+                                                     
 
                                                       <form class="edit" action="./back/removevehicle.php" method="get">
                                                             <input type="hidden" name="v_id" v_id="v_id" value="<?php echo $v_id; ?>">
