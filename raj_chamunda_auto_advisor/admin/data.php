@@ -258,11 +258,12 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                                       <div id="return"></div>
 
-                                                      <center>
-
-                                                            <button type="button" class="delete" onclick="removeVehicle(<?php echo $row['id']; ?>)">Delete</button>
-
-                                                      </center>
+                                                      <form class="edit" action="./back/removevehicle.php" method="get">
+                                                            <input type="hidden" name="v_id" v_id="v_id" value="<?php echo $v_id; ?>">
+                                                            <center>
+                                                                  <button type="submit" class="delete">Delete</button>
+                                                            </center>
+                                                      </form>
 
                                                 </td>
 
