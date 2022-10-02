@@ -119,8 +119,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                               <div>
 
-                                    <h4>Test</h4>
-
+                              <h4><?php echo $username ?></h4>
 
                                     <small>Admin</small>
 
