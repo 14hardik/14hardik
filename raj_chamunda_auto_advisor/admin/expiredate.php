@@ -257,11 +257,16 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                           $new_edate =  date('d/m/Y',$e_d);
 
-                                          $diffs = $sd - $ed;
-                                          $temp = abs(floor($diffs / (60 * 60 * 24)));
+                                          // $diffs = $sd - $ed;
+                                          $diffs = $ed - $sd;
+                                          $temp = floor($diffs / (60 * 60 * 24));
 
-                                          $exp = $temp - 5;
-                                          if ($choice == 'expire' &&  $exp = '0' || $temp =='5'  || $temp =='4' || $temp =='3' || $temp =='2' || $temp =='1' ||  $temp =='0' && $today_date > $end_date) {
+                                          $exp =$temp;
+                                          if(($temp>=0 && $temp<=5)){
+                                                // if()
+                                          // if ($choice == 'expire' &&  $exp = '0' || $temp =='5'  || $temp =='4' || $temp =='3' || $temp =='2' || $temp =='1' ||  $temp =='0' && $today_date > $end_date) {
+                                               
+                                               
                                                 // if ($exp == '0') {
 
                                                       // echo "//////////////////////";
