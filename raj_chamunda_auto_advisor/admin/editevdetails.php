@@ -178,12 +178,12 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                                                 </a>
                                                 <meta itemprop="position" content="1" />
                                           </li>
-                                          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                          <!-- <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                                                 <a href="addvehicle.php?uid=<?php echo $uid; ?>" itemprop="item">
                                                       <span itemprop="name">Add Vehicle</span>
                                                 </a>
                                                 <meta itemprop="position" content="1" />
-                                          </li>
+                                          </li> -->
                                           <li> Edite Vehicle Details</li>
                                     </ol>
                               </nav>
@@ -219,15 +219,18 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                                                       <select name="service_type" id="service_type">
 
                                                             <option value="<?php echo $service_type; ?>"><?php echo $service_type; ?></option>
-                                                            <option value="Insurance">Insurance</option>
+                                                            <?php
+                                                            $q = "select * from service_type where service_name!='$service_type' order by id asc";
+                                                            $result = mysqli_query($con, $q);
+                                                            ?>
 
-                                                            <option value="Tax">Tax</option>
-
-                                                            <option value="Permit">Permit</option>
-
-                                                            <option value="P.U.C">P.U.C</option>
-
-                                                            <option value="Parssing">Parssing</option>
+                                                            <?php
+                                                            while ($rows = mysqli_fetch_array($result)) {
+                                                            ?>
+                                                                  <option value="<?php echo $rows['service_name']; ?>"><?php echo $rows['service_name']; ?></option>
+                                                            <?php
+                                                            }
+                                                            ?>
 
 
 

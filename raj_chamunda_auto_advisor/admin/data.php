@@ -1,13 +1,12 @@
 <?php
 session_start();
-error_reporting(0);
 include_once("./db/connection.php");
 
 $username = base64_decode($_SESSION['username']);
 $password = base64_decode($_SESSION['password']);
-$serviceType = $_GET[service_type];
 
 if ($_SESSION['username'] && $_SESSION['password']) {
+      $serviceType = $_GET['service_type'];
 
 ?>
       <!DOCTYPE html>
@@ -24,7 +23,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <title>User Details</title>
+            <title>Vehicle Details</title>
 
             <link rel="icon" href="../Images/shiv-finance logo.png" type="image/x-icon">
 
@@ -51,7 +50,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                   <div class="sidebar-brand">
 
-                    <h3 class="logo-img">Raj chamunda auto adviser</h3>
+                        <h3 class="logo-img">Raj chamunda auto adviser</h3>
 
                         <h3><span></span></h3>
 
@@ -69,7 +68,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                               <li><a href="userdetails"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
 
-                              <li><a href="expiry"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
+                              <li><a href="expiredate"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
 
 
 
@@ -97,7 +96,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                               </label>
 
-                              User Details
+                              Vehicle Details
 
                         </h2>
 
@@ -130,21 +129,21 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
 
 
-                  <!-- <div class="position">
+                  <div class="position">
                         <div class="container-breadcrumb">
                               <nav aria-label="Breadcrumb" class="breadcrumb">
                                     <ol itemscope itemtype="https://schema.org/BreadcrumbList">
                                           <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                                                 <a href="dashboard.php" itemprop="item">
-                                                      <span itemprop="name">Dashboard</span>
+                                                      <!-- <span itemprop="name">Dashboard</span> -->
                                                 </a>
                                                 <meta itemprop="position" content="1" />
                                           </li>
-                                          <li> User Details</li>
+                                          <!-- <li> User Details</li> -->
                                     </ol>
                               </nav>
                         </div>
-                  </div> -->
+                  </div>
 
                   <div id="return"></div>
 
@@ -158,18 +157,18 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                               <thead class="thead">
 
                                     <tr align="center">
-
-
-
                                           <th>Index</th>
 
-                                          <th>User Name</th>
+                                          <th>Vehicle Number</th>
 
-                                          <th>Contact No.</th>
+                                          <th>Type</th>
 
-                                          <th>Edit Details</th>
+                                          <th>Start Date</th>
 
-                                          <th>Add Vehicle</th>
+                                          <th>End Date</th>
+                                          <th>Document</th>
+
+                                          <th>Edit</th>
 
                                           <th>Delete</th>
 
@@ -180,10 +179,11 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                               <tbody id="tbody" align="center">
 
                                     <?php
+                                    include_once("./db/connection.php");
 
                                     $count = 0;
 
-                                    $cmd = "select * from vehicle_details where service_type='$serviceType'";
+                                    $cmd = "select * from vehicle_details where service_type = $serviceType ";
 
                                     $result = mysqli_query($con, $cmd) or die(mysqli_error($con));
 
@@ -191,10 +191,12 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                           $id = $row['id'];
                                           $uid = $row['uid'];
-
-                                          $user_name = $row['user_name'];
-
-                                          $contact_no = $row['contact_no'];
+                                          $v_id = $row['v_id'];
+                                          $vehicle_no = $row['vehicle_no'];
+                                          $service_type = $row['service_type'];
+                                          $start_date = $row['start_date'];
+                                          $end_date = $row['end_date'];
+                                          $document = $row['document'];
 
 
 
@@ -208,45 +210,46 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                                 <td><?php echo $count = $count + 1; ?></td>
 
-                                                <td><?php echo $user_name; ?></td>
+                                                <td><?php echo $vehicle_no; ?></td>
+                                                <td><?php echo $service_type; ?></td>
 
-                                                <td><?php echo $contact_no; ?></td>
+                                                <td><?php echo $start_date; ?></td>
 
+                                                <td><?php echo $end_date; ?></td>
+                                                <td>
+                                                      <?php
 
+                                                      if ($document === 'Upload Document') {
+                                                            // echo $document;
+                                                      ?>
+                                                            <img src="<?php echo $document; ?>" alt="Upload Document" style="width:100%;height:100%;">
+                                                      <?php
+                                                      } else {
 
+                                                      ?>
 
-
-
-
+                                                            <a href="<?php echo $document; ?>" target="_blank">
+                                                                  <img src="<?php echo $document; ?>" alt="" style="width:100%;height:100%;">
+                                                            </a>
+                                                      <?php
+                                                      }
+                                                      ?>
+                                                </td>
 
                                                 <td>
 
-                                                      <form class="edit" action="edituser.php" method="get">
+                                                      <form class="edit" action="editevdetails.php" method="get">
 
+                                                            <input type="hidden" name="v_id" id="v_id" value="<?php echo $v_id; ?>">
                                                             <input type="hidden" name="uid" id="uid" value="<?php echo $uid; ?>">
 
-                                                            <button type="submit"  id="action" class="update">Edit</button>
+                                                            <button type="submit" id="action" class="update">Edit</button>
 
                                                       </form>
 
                                                 </td>
 
-                                                <td>
 
-                                                      <form class="edit" action="addvehicle.php" method="get">
-
-                                                            <input type="hidden" name="uid" id="uid" value="<?php echo $uid; ?>">
-
-                                                           
-
-                                                            <button type="submit"  id="add" class="update">Add</button>
-
-
-                                                           
-
-                                                      </form>
-
-                                                </td>
 
 
                                                 <td>
@@ -257,7 +260,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                                       <center>
 
-                                                            <button type="button" class="delete" onclick="removeUser(<?php echo $row['id']; ?>)">Delete</button>
+                                                            <button type="button" class="delete" onclick="removeVehicle(<?php echo $row['id']; ?>)">Delete</button>
 
                                                       </center>
 
@@ -311,11 +314,10 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
 
 
-                  <!-- custom javascript  -->
+                  <!-- custom javascript -->
+                  <!-- <script src="./js/addvehicle.js"></script> -->
 
-
-
-                  <script src="./js/removeuser.js"></script>
+                  <script src="./js/removevehicle.js"></script>
 
       </body>
 

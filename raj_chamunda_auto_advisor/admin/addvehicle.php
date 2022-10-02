@@ -230,16 +230,18 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                                       <select name="service_type" id="service_type">
 
+                                                            <?php
+                                                            $q = "select * from service_type order by id asc";
+                                                            $result = mysqli_query($con, $q);
+                                                            ?>
                                                             <option selected disabled>Select</option>
-                                                            <option value="Insurance">Insurance</option>
-
-                                                            <option value="Tax">Tax</option>
-
-                                                            <option value="Permit">Permit</option>
-
-                                                            <option value="P.U.C">P.U.C</option>
-
-                                                            <option value="Parssing">Parssing</option>
+                                                            <?php
+                                                            while ($rows = mysqli_fetch_array($result)) {
+                                                            ?>
+                                                                  <option value="<?php echo $rows['service_name']; ?>"><?php echo $rows['service_name']; ?></option>
+                                                            <?php
+                                                            }
+                                                            ?>
 
 
 
@@ -411,7 +413,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                                                       } else {
 
                                                       ?>
-                                                            
+
                                                             <a href="<?php echo $document; ?>" target="_blank">
                                                                   <img src="<?php echo $document; ?>" alt="" style="width:100%;height:100%;">
                                                             </a>

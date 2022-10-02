@@ -140,21 +140,21 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
 
 
-                  <!-- <div class="position">
+                  <div class="position">
                         <div class="container-breadcrumb">
                               <nav aria-label="Breadcrumb" class="breadcrumb">
                                     <ol itemscope itemtype="https://schema.org/BreadcrumbList">
                                           <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                                                 <a href="dash" itemprop="item">
-                                                      <span itemprop="name">Dashboard</span>
+                                                      <!-- <span itemprop="name">Dashboard</span> -->
                                                 </a>
                                                 <meta itemprop="position" content="1" />
                                           </li>
-                                          <li> User Details</li>
+                                          <!-- <li> User Details</li> -->
                                     </ol>
                               </nav>
                         </div>
-                  </div> -->
+                  </div>
 
                   <div id="return"></div>
 

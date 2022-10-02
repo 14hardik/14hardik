@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2022 at 04:16 PM
+-- Generation Time: Oct 01, 2022 at 10:45 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -39,6 +39,29 @@ CREATE TABLE `admin_data` (
 
 INSERT INTO `admin_data` (`id`, `username`, `password`) VALUES
 (1, 'admin', 'Test@123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `service_type`
+--
+
+CREATE TABLE `service_type` (
+  `id` int(11) NOT NULL,
+  `service_name` varchar(55) NOT NULL,
+  `status` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `service_type`
+--
+
+INSERT INTO `service_type` (`id`, `service_name`, `status`) VALUES
+(1, 'Insurance', 0),
+(2, 'Tax', 0),
+(3, 'Permit', 0),
+(4, 'Parsing', 0),
+(5, 'P.U.C', 0);
 
 -- --------------------------------------------------------
 
@@ -84,10 +107,11 @@ CREATE TABLE `vehicle_details` (
 --
 
 INSERT INTO `vehicle_details` (`id`, `uid`, `v_id`, `vehicle_no`, `service_type`, `start_date`, `end_date`, `document`, `status`) VALUES
-(3, '6335dc63bf14f', '691569a5', 'FGFG67GHJJ', 'Insurance', '2022-10-01', '2022-10-31', 'Not Set', 0),
-(4, '6335dc63bf14f', 'a36d5feb', 'FGFG67GHJJ', 'Insurance', '2022-10-02', '2022-10-31', './images/documents/a36d5feb_Doc.jpg', 0),
-(8, '6335dc63bf14f', 'b7f239e5', 'FGFG67GHJJ', 'Insurance', '2022-10-01', '2022-10-30', './images/documents/b7f239e5_Doc.jpg', 0),
-(10, '6335dc63bf14f', 'f952aa23', 'FGFG67GHJJ', 'Permit', '2022-10-01', '2022-10-31', './images/documents/f952aa23_Doc.jpg', 0);
+(4, '6335dc63bf14f', 'a36d5feb', 'FGFG67GHJJ12345620', 'Parsing', '2022-10-02', '2022-10-31', './images/documents/a36d5feb_Doc.jpg', 0),
+(8, '6335dc63bf14f', 'b7f239e5', 'FGFG67GHJJ', 'Insurance', '2022-10-01', '2022-10-01', './images/documents/b7f239e5_Doc.jpg', 0),
+(12, '6335dc63bf14f', '48636417', 'FGFG67GHJJ', 'P.U.C', '2022-10-01', '2022-10-02', './images/documents/48636417_Doc.jpg', 0),
+(13, '6335dc63bf14f', 'dcffafed', 'FGFG67GHJJ25525', 'Permit', '2022-10-01', '2022-10-06', 'Upload Document', 0),
+(14, '6335dc63bf14f', 'caa3d34a', 'FGFG67GHJJ', 'Tax', '2022-10-09', '2022-11-06', 'Upload Document', 0);
 
 --
 -- Indexes for dumped tables
@@ -97,6 +121,12 @@ INSERT INTO `vehicle_details` (`id`, `uid`, `v_id`, `vehicle_no`, `service_type`
 -- Indexes for table `admin_data`
 --
 ALTER TABLE `admin_data`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `service_type`
+--
+ALTER TABLE `service_type`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -122,6 +152,12 @@ ALTER TABLE `admin_data`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `service_type`
+--
+ALTER TABLE `service_type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `user_details`
 --
 ALTER TABLE `user_details`
@@ -131,7 +167,7 @@ ALTER TABLE `user_details`
 -- AUTO_INCREMENT for table `vehicle_details`
 --
 ALTER TABLE `vehicle_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

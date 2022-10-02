@@ -11,6 +11,19 @@ if (isset($_POST['id'])) {
      while ($row = mysqli_fetch_array($result)) {
 
            $uid = $row['uid'];
+           $v_id = $row['v_id'];
+
+          
+     }
+
+     $sel1 = "select * from vehicle_details where id='$id'";
+     $result1 = mysqli_query($con, $sel1) or die(mysqli_error($con));
+
+     while ($row = mysqli_fetch_array($result1)) {
+
+           $uid = $row['uid'];
+           $v_id = $row['v_id'];
+
           
      }
 

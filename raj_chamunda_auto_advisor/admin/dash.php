@@ -163,7 +163,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
 
 
-                              <a href="car_loan.php" class="card-single2">
+                              <a href="data.php?service_type='Tax'" class="card-single2">
 
                                     <div>
 
@@ -177,7 +177,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                               </a>
 
-                              <a href="mortgage_loan.php" class="card-single3">
+                              <a href="data.php?service_type='P.U.C'" class="card-single3">
 
                                     <div>
 
@@ -191,7 +191,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                         
 
-                              <a href="top-up_loan.php" class="card-single4">
+                              <a href="data.php?service_type='Parsing'" class="card-single4">
 
                                     <div>
 
@@ -204,7 +204,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                            
 
                                     
-                                    <a href="personal_loan.php" class="card-single5">
+                                    <a href="data.php?service_type='Permit'" class="card-single5">
                                           
                                           <div>
                                                 
