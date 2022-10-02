@@ -70,7 +70,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                               <li><a href="userdetails" class="active"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
 
-                              <li><a href="expiredate"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
+                              <li><a href="select"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
 
 
 
@@ -193,7 +193,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     $count = 0;
 
-                                    $cmd = "select * from user_details  ";
+                                    $cmd = "select * from user_details order by uid desc";
 
                                     $result = mysqli_query($con, $cmd) or die(mysqli_error($con));
 

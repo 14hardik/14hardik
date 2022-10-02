@@ -70,7 +70,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                               <li><a href="userdetails"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
 
-                              <li><a href="expiredate"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
+                              <li><a href="select"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
 
 
 
@@ -159,7 +159,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     <div class="col">
 
-                                          <label>User Name :</label>
+                                          <label>User Name<sup style="color:white;">*</sup></label>
 
                                     </div>
 
@@ -173,7 +173,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     <div class="col">
 
-                                          <label>Contact no. :</label>
+                                          <label>Contact no<sup style="color:white;">*</sup></label>
 
                                     </div>
 
@@ -184,7 +184,14 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                                     </div>
 
                                     
-                                    
+                                     <!-- <br> -->
+                                     <small style="color:white; font-size:1rem;font-weight:bold;">* Fields are
+                                                Mandatory</small>
+
+
+                                          <!-- <br> -->
+                                          <!-- <hr> -->
+                                          <!-- <br> -->
                                     
                                     
                                     

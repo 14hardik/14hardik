@@ -5,32 +5,6 @@ $password = base64_decode($_SESSION['password']);
 
 if ($_SESSION['username'] && $_SESSION['password']) {
 
-    
-      include_once("./db/connection.php");
-      $cmd1 = "select * from vehicle_details where service_type='Insurance'";
-      $result1 = mysqli_query($con, $cmd1) or die(mysqli_error($con));
-      $Insurance = mysqli_num_rows($result1);
-
-      $cmd1 = "select * from vehicle_details where service_type='Tax'";
-      $result1 = mysqli_query($con, $cmd1) or die(mysqli_error($con));
-      $Tax = mysqli_num_rows($result1);
-
-      $cmd1 = "select * from vehicle_details where service_type='Permit'";
-      $result1 = mysqli_query($con, $cmd1) or die(mysqli_error($con));
-      $Permit = mysqli_num_rows($result1);
-
-      $cmd1 = "select * from vehicle_details where service_type='Parsing'";
-      $result1 = mysqli_query($con, $cmd1) or die(mysqli_error($con));
-      $Parsing = mysqli_num_rows($result1);
-
-      $cmd1 = "select * from vehicle_details where service_type='P.U.C'";
-      $result1 = mysqli_query($con, $cmd1) or die(mysqli_error($con));
-      $puc = mysqli_num_rows($result1);
-
-    
-      // echo $homeloan;
-
-
 ?>
 
 
@@ -89,13 +63,13 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                         <ul>
 
-                              <li><a href="dash" class="active"><span class="fa fa-dashboard"></span><span>Dashboard</span></a></li>
+                              <li><a href="dash" ><span class="fa fa-dashboard"></span><span>Dashboard</span></a></li>
 
                               <li><a href="adduser" ><span class="fa fa-user-plus"></span><span>Add User</span></a></li>
 
                               <li><a href="userdetails"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
 
-                              <li><a href="select"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
+                              <li><a href="select" class="active"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
 
 
 
@@ -170,14 +144,15 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                   <main>
 
-                        <div class="cards">
+                        <div class="cards" >
 
-                              <a href="data.php?service_type='Insurance'" class="card-single1">
+                              <a href="expiredate.php?select=expire" class="card-single1">
 
                                     <div>
-                                          <h1>Insurance</h1>
-                                          <span><?php echo $Insurance;?></span>
+                                          <h2>Expire Cooming Soon</h2>
                                           
+                                          <!-- <span>5</span> -->
+
 
                                     </div>
 
@@ -189,13 +164,13 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
 
 
-                              <a href="data.php?service_type='Tax'" class="card-single2">
+                              <a href="expiredate.php?select=expired" class="card-single2">
 
                                     <div>
 
-                                          <h1>Tax</h1>
+                                          <h2>Expired</h2>
 
-                                          <span><?php echo $Tax;?></span>
+                                          <!-- <span>5</span> -->
 
                                     </div>
 
@@ -203,45 +178,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                               </a>
 
-                              <a href="data.php?service_type='P.U.C'" class="card-single3">
-
-                                    <div>
-
-                                          <h1>PUC</h1>
-
-                                          <span><?php echo $puc;?></span>
-
-                                    </div>
-
-                              </a>
-
-                        
-
-                              <a href="data.php?service_type='Parsing'" class="card-single4">
-
-                                    <div>
-
-                                          <h1>Parsing</h1>
-                                          <span><?php echo $Parsing;?></span>
-
-                                    </div>
-
-                              </a>
-                           
-
-                                    
-                                    <a href="data.php?service_type='Permit'" class="card-single5">
-                                          
-                                          <div>
-                                                
-                                                <h1>Permit</h1>
-                                                
-                                                <span><?php echo $Permit;?></span>
-                                                
-                                          </div>
-                                          
-                                    </a>
-                                    
+                             
                           
                            
 
