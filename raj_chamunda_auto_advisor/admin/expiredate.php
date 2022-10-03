@@ -6,482 +6,483 @@ $password = base64_decode($_SESSION['password']);
 
 if ($_SESSION['username'] && $_SESSION['password']) {
 
-      if (isset($_GET['select'])) {
+      if (isset($_GET['service_type'])) {
 
-            $choice = $_GET['select'];
-       
+            $choice = base64_decode($_SESSION['select']);
+            // echo $select;
+           
 
-
-
+            $service_type = mysqli_real_escape_string($con, $_GET['service_type']);
+            $service_type = htmlspecialchars($service_type);
+// echo $service_type;
 
 ?>
+      <!DOCTYPE html>
 
+<html lang="en">
 
-            <!DOCTYPE html>
+<head>
 
-            <html lang="en">
+      <meta charset="UTF-8">
 
-            <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-                  <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-                  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>ExpiredDate Records</title>
 
-                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" href="../Images/shiv-finance logo.png" type="image/x-icon">
 
-                  <title>ExpiredDate Records</title>
+      <link rel="stylesheet" href="./design/css/dash.css">
 
-                  <link rel="icon" href="../Images/shiv-finance logo.png" type="image/x-icon">
+      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 
-                  <link rel="stylesheet" href="./design/css/dash.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-                  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-
-                  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-                  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-                  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-
-
-
-            </head>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 
 
-            <body>
-
-                  <input type="checkbox" id="nav-toggle">
-
-                  <div class="sidebar">
-
-                        <div class="sidebar-brand">
+</head>
 
 
-                  <h3 class="logo-img">Raj chamunda auto adviser</h3>
-            
-                           
 
-                              <h3><span></span></h3>
+<body>
 
-                              <hr>
+      <input type="checkbox" id="nav-toggle">
+
+      <div class="sidebar">
+
+            <div class="sidebar-brand">
+
+
+      <h3 class="logo-img">Raj chamunda auto adviser</h3>
+
+               
+
+                  <h3><span></span></h3>
+
+                  <hr>
+
+            </div>
+
+            <div class="sidebar-menu">
+
+                  <ul>
+
+                        <li><a href="dash"><span class="fa fa-dashboard"></span><span>Dashboard</span></a></li>
+
+                        <li><a href="adduser"><span class="fa fa-user-plus"></span><span>Add User</span></a></li>
+
+                        <li><a href="userdetails"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
+
+                        <li><a href="select" class="active"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
+
+                  </ul>
+
+
+
+            </div>
+
+      </div>
+
+      <div class="main-content">
+
+            <header>
+
+
+
+                  <h2>
+
+                        <label for="nav-toggle">
+
+                              <span class="fa fa-align-justify"></span>
+
+                        </label>
+
+                        <?php
+                        if ($choice == 'expire') {
+                        ?>
+                              Expire cooming soon Records
+                        <?php
+                        } else {
+                        ?>
+                              Expired Records
+                        <?php
+
+                        }
+                        ?>
+
+                  </h2>
+
+
+
+                  <div class="user-wrapper">
+
+                        <li class="user"><img class="" src="../Images/default-user.jpg" width="40px" height="40px" alt=""></li>
+
+                        <div>
+
+                              <h4><?php echo $username ?></h4>
+
+
+                              <small>Admin</small>
+
+
 
                         </div>
 
-                        <div class="sidebar-menu">
+                        <div id="data-title" class="visible">
 
-                              <ul>
-
-                                    <li><a href="dash"><span class="fa fa-dashboard"></span><span>Dashboard</span></a></li>
-
-                                    <li><a href="adduser"><span class="fa fa-user-plus"></span><span>Add User</span></a></li>
-
-                                    <li><a href="userdetails"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
-
-                                    <li><a href="select" class="active"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
-
-                              </ul>
-
-
+                              <a href="./back/function/logout.php" data-title="Log out"><span class="fa fa-sign-out"></span></a>
 
                         </div>
 
                   </div>
 
-                  <div class="main-content">
 
-                        <header>
+            </header>
 
-
-
-                              <h2>
-
-                                    <label for="nav-toggle">
-
-                                          <span class="fa fa-align-justify"></span>
-
-                                    </label>
-
-                                    <?php
-                                    if ($choice == 'expire') {
-                                    ?>
-                                          Expire cooming soon Records
-                                    <?php
-                                    } else {
-                                    ?>
-                                          Expired Records
-                                    <?php
-
-                                    }
-                                    ?>
-
-                              </h2>
-
-
-
-                              <div class="user-wrapper">
-
-                                    <li class="user"><img class="" src="../Images/default-user.jpg" width="40px" height="40px" alt=""></li>
-
-                                    <div>
-
-                                          <h4><?php echo $username ?></h4>
-
-
-                                          <small>Admin</small>
-
-
-
-                                    </div>
-
-                                    <div id="data-title" class="visible">
-
-                                          <a href="./back/function/logout.php" data-title="Log out"><span class="fa fa-sign-out"></span></a>
-
-                                    </div>
-
-                              </div>
-
-
-                        </header>
-
-                  </div>
+      </div>
 
 
 
 
-                  <div class="position">
-                        <div class="container-breadcrumb">
-                              <nav aria-label="Breadcrumb" class="breadcrumb">
-                                    <ol itemscope itemtype="https://schema.org/BreadcrumbList">
-                                          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                                <a href="dash" itemprop="item">
-                                                      <span itemprop="name">Dashboard</span>
-                                                </a>
-                                                <meta itemprop="position" content="1" />
-                                          </li>
-                                          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                                <a href="select" itemprop="item">
-                                                      <span itemprop="name"> Expiry</span>
-                                                </a>
-                                                <meta itemprop="position" content="1" />
-                                          </li>
+      <div class="position">
+            <div class="container-breadcrumb">
+                  <nav aria-label="Breadcrumb" class="breadcrumb">
+                        <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+                              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                    <a href="dash" itemprop="item">
+                                          <span itemprop="name">Dashboard</span>
+                                    </a>
+                                    <meta itemprop="position" content="1" />
+                              </li>
+                              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                    <a href="select" itemprop="item">
+                                          <span itemprop="name"> Expiry</span>
+                                    </a>
+                                    <meta itemprop="position" content="1" />
+                              </li>
+                              <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                    <a href="select" itemprop="item">
+                                          <span itemprop="selectype"> Select Service Type</span>
+                                    </a>
+                                    <meta itemprop="position" content="1" />
+                              </li>
 
-                                          <?php
-                                          if ($choice == 'expire') {
-                                          ?>
-                                                <li> Expire cooming soon Records</li>
-                                          <?php
-                                          } else {
-                                          ?>
-                                                <li> Expired Records</li>
-                                          <?php
+                              <?php
+                              if ($choice == 'expire') {
+                              ?>
+                                    <li> Expire cooming soon Records</li>
+                              <?php
+                              } else {
+                              ?>
+                                    <li> Expired Records</li>
+                              <?php
 
-                                          }
-                                          ?>
-
-
-
-                                    </ol>
-                              </nav>
-                        </div>
-                  </div>
-
-
-
-                  <div class="responsive-table">
-
-
-                        <table id="file_export" class="table table-striped table-bordered display">
+                              }
+                              ?>
 
 
 
-                              <thead class="thead">
+                        </ol>
+                  </nav>
+            </div>
+      </div>
 
-                                    <tr align="center">
+
+
+      <div class="responsive-table">
+
+
+            <table id="file_export" class="table table-striped table-bordered display">
 
 
 
-                                          <th>Index</th>
-                                          <th>UserName</th>
-                                          <th>Contact No.</th>
-                                          <th>Vehicle No.</th>
+                  <thead class="thead">
 
-                                          <th>Type</th>
+                        <tr align="center">
 
-                                          <th>Start Date</th>
 
-                                          <th>End Date</th>
-                                          <th>Document</th>
 
-                                          <th>Edit</th>
+                              <th>Index</th>
+                              <th>UserName</th>
+                              <th>Contact No.</th>
+                              <th>Vehicle No.</th>
 
-                                          <th>Delete</th>
+                              <th>Type</th>
+
+                              <th>Start Date</th>
+
+                              <th>End Date</th>
+                              <th>Document</th>
+
+                              <th>Edit</th>
+
+                              <th>Delete</th>
+                        </tr>
+
+                  </thead>
+
+                  <tbody id="tbody" align="center">
+
+                        <?php
+
+                        $count = 0;
+
+                        $cmd = "select * from vehicle_details,user_details where vehicle_details.uid=user_details.uid  and vehicle_details.service_type='$service_type' order by vehicle_details.end_date desc";
+
+                        $result = mysqli_query($con, $cmd) or die(mysqli_error($con));
+
+                        while ($row = mysqli_fetch_array($result)) {
+
+                              $id = $row['id'];
+                              $uid = $row['uid'];
+                              $user_name = $row['user_name'];
+
+                              $contact_no = $row['contact_no'];
+                              $v_id = $row['v_id'];
+                              $vehicle_no = $row['vehicle_no'];
+                              $service_type = $row['service_type'];
+                              $start_date = $row['start_date'];
+                              $end_date = $row['end_date'];
+                              $document = $row['document'];
+
+
+                              $today_date = date('Y-m-d');
+
+                              $sd = strtotime($today_date);
+                              $ed = strtotime($end_date);
+
+                              $s_d = strtotime($start_date);
+                              $e_d = strtotime($end_date);
+
+                              $new_sdate = date('d/m/Y',$s_d);
+
+                              $new_edate =  date('d/m/Y',$e_d);
+
+                              // $diffs = $sd - $ed;
+                              $diffs = $ed - $sd;
+                              $temp = floor($diffs / (60 * 60 * 24));
+
+                              $exp =$temp;
+                              if($choice =='expire' && ($temp>=0 && $temp<=5)){
+                                  
+                        ?>
+
+
+
+                                    <tr id="delete<?php echo $row['id'] ?>">
+
+
+
+                                          <td><?php echo $count = $count + 1; ?></td>
+                                          <td><?php echo $user_name; ?></td>
+                                          <td><?php echo $contact_no; ?></td>
+                                          <td><?php echo $vehicle_no; ?></td>
+                                          <td><?php echo $service_type; ?></td>
+
+                                          <td><?php echo $new_sdate; ?></td>
+
+                                          <td><?php echo $new_edate; ?></td>
+                                          <td>
+                                                <?php
+
+                                                if ($document === 'Upload Document') {
+                                                      // echo $document;
+                                                ?>
+                                                      <img src="<?php echo $document; ?>" alt="Upload Document" style="width:100%;height:100%;">
+                                                <?php
+                                                } else {
+
+                                                ?>
+                                                      <a href="<?php echo $document; ?>" target="_blank">
+                                                            <img src="<?php echo $document; ?>" alt="" style="width:100%;height:100%;">
+                                                      </a>
+                                                <?php
+                                                }
+                                                ?>
+                                          </td>
+
+
+
+
+
+
+
+
+
+
+                                          <td>
+
+                                                <form class="edit" action="editevdetails.php" method="get">
+
+                                                      <input type="hidden" name="v_id" id="v_id" value="<?php echo $v_id; ?>">
+                                                      <input type="hidden" name="uid" id="uid" value="<?php echo $uid; ?>">
+
+                                                      <button type="submit" id="action" class="update">Edit</button>
+
+                                                </form>
+
+                                          </td>
+
+
+
+
+                                          <td>
+
+
+
+                                                <div id="return"></div>
+
+                                                <center>
+
+                                                      <button type="button" class="delete" onclick="removeVehicle(<?php echo $row['id']; ?>)">Delete</button>
+
+                                                </center>
+
+                                          </td>
+
                                     </tr>
 
-                              </thead>
 
-                              <tbody id="tbody" align="center">
 
-                                    <?php
+                              <?php
+                              // $e = 0 < $exp < 5 ;
 
-                                    $count = 0;
+                              // } else if ($choice == 'expired' && !in_array($temp, range(0,5)) && $exp < '0') {
+                              } else if ($choice == 'expired' && $today_date > $end_date) {
 
-                                    $cmd = "select * from vehicle_details,user_details where vehicle_details.uid=user_details.uid  order by vehicle_details.end_date desc";
+                                    // if ($exp <= '0') {
+                              ?>
 
-                                    $result = mysqli_query($con, $cmd) or die(mysqli_error($con));
 
-                                    while ($row = mysqli_fetch_array($result)) {
 
-                                          $id = $row['id'];
-                                          $uid = $row['uid'];
-                                          $user_name = $row['user_name'];
+                                    <tr id="delete<?php echo $row['id'] ?>">
 
-                                          $contact_no = $row['contact_no'];
-                                          $v_id = $row['v_id'];
-                                          $vehicle_no = $row['vehicle_no'];
-                                          $service_type = $row['service_type'];
-                                          $start_date = $row['start_date'];
-                                          $end_date = $row['end_date'];
-                                          $document = $row['document'];
 
 
-                                          $today_date = date('Y-m-d');
+                                          <td><?php echo $count = $count + 1; ?></td>
+                                          <td><?php echo $user_name; ?></td>
+                                          <td><?php echo $contact_no; ?></td>
+                                          <td><?php echo $vehicle_no; ?></td>
+                                          <td><?php echo $service_type; ?></td>
 
-                                          $sd = strtotime($today_date);
-                                          $ed = strtotime($end_date);
+                                          <td><?php echo $new_sdate; ?></td>
 
-                                          $s_d = strtotime($start_date);
-                                          $e_d = strtotime($end_date);
+                                          <td><?php echo $new_edate; ?></td>
+                                          <td>
+                                                <?php
 
-                                          $new_sdate = date('d/m/Y',$s_d);
+                                                if ($document === 'Upload Document') {
+                                                      // echo $document;
+                                                ?>
+                                                      <img src="<?php echo $document; ?>" alt="Upload Document" style="width:100%;height:100%;">
+                                                <?php
+                                                } else {
 
-                                          $new_edate =  date('d/m/Y',$e_d);
+                                                ?>
+                                                      <a href="<?php echo $document; ?>" target="_blank">
+                                                            <img src="<?php echo $document; ?>" alt="" style="width:100%;height:100%;">
+                                                      </a>
+                                                <?php
+                                                }
+                                                ?>
+                                          </td>
+                                          <td>
 
-                                          // $diffs = $sd - $ed;
-                                          $diffs = $ed - $sd;
-                                          $temp = floor($diffs / (60 * 60 * 24));
+                                                <form class="edit" action="editevdetails.php" method="get">
 
-                                          $exp =$temp;
-                                          if(($temp>=0 && $temp<=5)){
-                                                // if()
-                                          // if ($choice == 'expire' &&  $exp = '0' || $temp =='5'  || $temp =='4' || $temp =='3' || $temp =='2' || $temp =='1' ||  $temp =='0' && $today_date > $end_date) {
-                                               
-                                               
-                                                // if ($exp == '0') {
+                                                      <input type="hidden" name="v_id" id="v_id" value="<?php echo $v_id; ?>">
+                                                      <input type="hidden" name="uid" id="uid" value="<?php echo $uid; ?>">
 
-                                                      // echo "//////////////////////";
-                                    ?>
+                                                      <button type="submit" id="action" class="update">Edit</button>
 
+                                                </form>
 
+                                          </td>
 
-                                                <tr id="delete<?php echo $row['id'] ?>">
 
 
 
-                                                      <td><?php echo $count = $count + 1; ?></td>
-                                                      <td><?php echo $user_name; ?></td>
-                                                      <td><?php echo $contact_no; ?></td>
-                                                      <td><?php echo $vehicle_no; ?></td>
-                                                      <td><?php echo $service_type; ?></td>
+                                          <td>
 
-                                                      <td><?php echo $new_sdate; ?></td>
 
-                                                      <td><?php echo $new_edate; ?></td>
-                                                      <td>
-                                                            <?php
 
-                                                            if ($document === 'Upload Document') {
-                                                                  // echo $document;
-                                                            ?>
-                                                                  <img src="<?php echo $document; ?>" alt="Upload Document" style="width:100%;height:100%;">
-                                                            <?php
-                                                            } else {
+                                                <div id="return"></div>
 
-                                                            ?>
-                                                                  <a href="<?php echo $document; ?>" target="_blank">
-                                                                        <img src="<?php echo $document; ?>" alt="" style="width:100%;height:100%;">
-                                                                  </a>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                      </td>
+                                                <center>
 
+                                                      <button type="button" class="delete" onclick="removeVehicle(<?php echo $row['id']; ?>)">Delete</button>
 
+                                                </center>
 
+                                          </td>
 
+                                    </tr>
 
 
 
+                        <?php
 
+                                    // }
+                              }
+                        }
+                        ?>
 
 
-                                                      <td>
 
-                                                            <form class="edit" action="editevdetails.php" method="get">
 
-                                                                  <input type="hidden" name="v_id" id="v_id" value="<?php echo $v_id; ?>">
-                                                                  <input type="hidden" name="uid" id="uid" value="<?php echo $uid; ?>">
 
-                                                                  <button type="submit" id="action" class="update">Edit</button>
+                  </tbody>
 
-                                                            </form>
+            </table>
 
-                                                      </td>
+            <div id="output"></div>
 
 
 
+      </div>
 
-                                                      <td>
+      <script src="./../assets/libs/jquery/dist/jquery.min.js"></script>
 
+      <script src="./../assets/extra-libs/DataTables/datatables.min.js"></script>
 
+      <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
 
-                                                            <div id="return"></div>
+      <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
 
-                                                            <center>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 
-                                                                  <button type="button" class="delete" onclick="removeVehicle(<?php echo $row['id']; ?>)">Delete</button>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
 
-                                                            </center>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 
-                                                      </td>
+      <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
 
-                                                </tr>
+      <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
 
+      <script src="./../dist/js/pages/datatable/datatable-advanced.init.js"></script>
 
 
-                                          <?php
-                                          // $e = 0 < $exp < 5 ;
 
-                                          // } else if ($choice == 'expired' && !in_array($temp, range(0,5)) && $exp < '0') {
-                                          } else if ($choice == 'expired' && $today_date > $end_date) {
-      
-                                                // if ($exp <= '0') {
-                                          ?>
 
+      <!-- custom javascript -->
+      <!-- <script src="./js/addvehicle.js"></script> -->
 
+      <script src="./js/removevehicle.js"></script>
 
-                                                <tr id="delete<?php echo $row['id'] ?>">
 
 
 
-                                                      <td><?php echo $count = $count + 1; ?></td>
-                                                      <td><?php echo $user_name; ?></td>
-                                                      <td><?php echo $contact_no; ?></td>
-                                                      <td><?php echo $vehicle_no; ?></td>
-                                                      <td><?php echo $service_type; ?></td>
+</body>
 
-                                                      <td><?php echo $new_sdate; ?></td>
 
-                                                      <td><?php echo $new_edate; ?></td>
-                                                      <td>
-                                                            <?php
 
-                                                            if ($document === 'Upload Document') {
-                                                                  // echo $document;
-                                                            ?>
-                                                                  <img src="<?php echo $document; ?>" alt="Upload Document" style="width:100%;height:100%;">
-                                                            <?php
-                                                            } else {
+</html>
 
-                                                            ?>
-                                                                  <a href="<?php echo $document; ?>" target="_blank">
-                                                                        <img src="<?php echo $document; ?>" alt="" style="width:100%;height:100%;">
-                                                                  </a>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                      </td>
-                                                      <td>
-
-                                                            <form class="edit" action="editevdetails.php" method="get">
-
-                                                                  <input type="hidden" name="v_id" id="v_id" value="<?php echo $v_id; ?>">
-                                                                  <input type="hidden" name="uid" id="uid" value="<?php echo $uid; ?>">
-
-                                                                  <button type="submit" id="action" class="update">Edit</button>
-
-                                                            </form>
-
-                                                      </td>
-
-
-
-
-                                                      <td>
-
-
-
-                                                            <div id="return"></div>
-
-                                                            <center>
-
-                                                                  <button type="button" class="delete" onclick="removeVehicle(<?php echo $row['id']; ?>)">Delete</button>
-
-                                                            </center>
-
-                                                      </td>
-
-                                                </tr>
-
-
-
-                                    <?php
-
-                                                // }
-                                          }
-                                    }
-                                    ?>
-
-
-
-
-
-                              </tbody>
-
-                        </table>
-
-                        <div id="output"></div>
-
-
-
-                  </div>
-
-                  <script src="./../assets/libs/jquery/dist/jquery.min.js"></script>
-
-                  <script src="./../assets/extra-libs/DataTables/datatables.min.js"></script>
-
-                  <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
-
-                  <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
-
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-
-                  <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
-
-                  <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
-
-                  <script src="./../dist/js/pages/datatable/datatable-advanced.init.js"></script>
-
-
-
-
-                  <!-- custom javascript -->
-                  <!-- <script src="./js/addvehicle.js"></script> -->
-
-                  <script src="./js/removevehicle.js"></script>
-
-
-
-
-            </body>
-
-
-
-            </html>
       <?php
       } else {
       ?>

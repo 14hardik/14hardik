@@ -140,13 +140,12 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                   </header>
 
-
-
+              
                   <main>
 
                         <div class="cards" >
 
-                              <a href="expiredate.php?select=expire" class="card-single1">
+                              <a href="selectype.php?select=expire" class="card-single1">
 
                                     <div>
                                           <h2>Expire Cooming Soon</h2>
@@ -164,7 +163,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
 
 
-                              <a href="expiredate.php?select=expired" class="card-single2">
+                              <a href="selectype.php?select=expired" class="card-single2">
 
                                     <div>
 

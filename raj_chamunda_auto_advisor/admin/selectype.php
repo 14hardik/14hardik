@@ -1,12 +1,19 @@
 <?php
 session_start();
+include_once("./db/connection.php");
 $username = base64_decode($_SESSION['username']);
 $password = base64_decode($_SESSION['password']);
 
 if ($_SESSION['username'] && $_SESSION['password']) {
 
-    
-      include_once("./db/connection.php");
+    if (isset($_GET['select'])){
+
+      $select = mysqli_real_escape_string($con, $_GET['select']);
+      $select = htmlspecialchars($select);
+
+      $_SESSION['select'] = base64_encode($select);
+
+
       $cmd1 = "select * from vehicle_details where service_type='Insurance'";
       $result1 = mysqli_query($con, $cmd1) or die(mysqli_error($con));
       $Insurance = mysqli_num_rows($result1);
@@ -176,11 +183,10 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                         <div class="cards">
 
-                              <a href="data.php?service_type=Insurance" class="card-single1">
+                              <a href="expiredate.php?service_type=Insurance" class="card-single1">
 
                                     <div>
-                                          <h1>Insurance</h1>
-                                          <span><?php echo $Insurance;?></span>
+                                          <h2>Insurance</h2>
                                           
 
                                     </div>
@@ -193,13 +199,12 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
 
 
-                              <a href="data.php?service_type=Tax" class="card-single2">
+                              <a href="expiredate.php?service_type=Tax" class="card-single2">
 
                                     <div>
 
-                                          <h1>Tax</h1>
+                                          <h2>Tax</h2>
 
-                                          <span><?php echo $Tax;?></span>
 
                                     </div>
 
@@ -207,13 +212,12 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                               </a>
 
-                              <a href="data.php?service_type=P.U.C" class="card-single3">
+                              <a href="expiredate.php?service_type=P.U.C" class="card-single3">
 
                                     <div>
 
-                                          <h1>PUC</h1>
+                                          <h2>PUC</h2>
 
-                                          <span><?php echo $puc;?></span>
 
                                     </div>
 
@@ -221,12 +225,11 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                         
 
-                              <a href="data.php?service_type=Parsing" class="card-single4">
+                              <a href="expiredate.php?service_type=Parsing" class="card-single4">
 
                                     <div>
 
-                                          <h1>Parsing</h1>
-                                          <span><?php echo $Parsing;?></span>
+                                          <h2>Parsing</h2>
 
                                     </div>
 
@@ -234,25 +237,23 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                            
 
                                     
-                                    <a href="data.php?service_type=Permit" class="card-single5">
+                                    <a href="expiredate.php?service_type=Permit" class="card-single5">
                                           
                                           <div>
                                                 
-                                                <h1>Permit</h1>
+                                                <h2>Permit</h2>
                                                 
-                                                <span><?php echo $Permit;?></span>
                                                 
                                           </div>
                                           
                                     </a>
 
-                                    <a href="data.php?service_type=RC" class="card-single5">
+                                    <a href="expiredate.php?service_type=RC" class="card-single5">
                                           
                                           <div>
                                                 
-                                                <h1>RC</h1>
+                                                <h2>RC</h2>
                                                 
-                                                <span><?php echo $rc;?></span>
                                                 
                                           </div>
                                           
@@ -283,10 +284,16 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
       </html>
 
-
-
+      <?php
+      } else {
+      ?>
+            <script>
+                  alert('Page not found!');
+                  window.location = './expiredate';
+            </script>
 <?php
+      }
 } else {
-      echo header('Location: ./account');
+      echo header('Location:./account');
 }
 ?>
