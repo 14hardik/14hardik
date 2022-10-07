@@ -100,6 +100,8 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                               <li><a href="userdetails"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
 
                               <li><a href="select"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
+                              <li><a href="admindetails"><span class="fas fa-user-edit"></span><span>Admin Details</span></a></li>
+
 
 
 
@@ -176,7 +178,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                         <div class="cards">
 
-                              <a href="data.php?service_type=Insurance" class="card-single1">
+                              <a href="data.php?service_type='Insurance'" class="card-single1">
 
                                     <div>
                                           <h1>Insurance</h1>
@@ -193,7 +195,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
 
 
-                              <a href="data.php?service_type=Tax" class="card-single2">
+                              <a href="data.php?service_type='Tax'" class="card-single2">
 
                                     <div>
 
@@ -207,7 +209,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                               </a>
 
-                              <a href="data.php?service_type=P.U.C" class="card-single3">
+                              <a href="data.php?service_type='P.U.C'" class="card-single3">
 
                                     <div>
 
@@ -221,7 +223,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                         
 
-                              <a href="data.php?service_type=Parsing" class="card-single4">
+                              <a href="data.php?service_type='Parsing'" class="card-single4">
 
                                     <div>
 
@@ -234,7 +236,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                            
 
                                     
-                                    <a href="data.php?service_type=Permit" class="card-single5">
+                                    <a href="data.php?service_type='Permit'" class="card-single5">
                                           
                                           <div>
                                                 
@@ -246,7 +248,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                                           
                                     </a>
 
-                                    <a href="data.php?service_type=RC" class="card-single6">
+                                    <a href="data.php?service_type='RC'" class="card-single6">
                                           
                                           <div>
                                                 

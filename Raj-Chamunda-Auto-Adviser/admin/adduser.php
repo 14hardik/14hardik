@@ -72,6 +72,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                               <li><a href="select"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
 
+                              <li><a href="admindetails" ><span class="fas fa-user-edit"></span><span>Admin Details</span></a></li>
 
 
 
@@ -225,6 +226,6 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
 <?php
 } else {
-      echo header('Location: ../login.php');
+      echo header('Location: ./account');
 }
 ?>

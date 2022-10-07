@@ -7,7 +7,7 @@ $password = base64_decode($_SESSION['password']);
 
 if ($_SESSION['username'] && $_SESSION['password']) {
       $serviceType = $_GET['service_type'];
-
+      // echo $serviceType;
 ?>
       <!DOCTYPE html>
 
@@ -69,6 +69,8 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                               <li><a href="userdetails"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
 
                               <li><a href="select"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
+
+                              <li><a href="admindetails" ><span class="fas fa-user-edit"></span><span>Admin Details</span></a></li>
 
 
 
@@ -183,7 +185,7 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
                                     $count = 0;
 
-                                    $cmd = "select * from vehicle_details where service_type = $serviceType ";
+                                    $cmd = "select * from vehicle_details where service_type= $serviceType ";
 
                                     $result = mysqli_query($con, $cmd) or die(mysqli_error($con));
 
@@ -328,6 +330,6 @@ if ($_SESSION['username'] && $_SESSION['password']) {
 
 <?php
 } else {
-      echo header('Location: ../login.php');
+      echo header('Location: ./account');
 }
 ?>

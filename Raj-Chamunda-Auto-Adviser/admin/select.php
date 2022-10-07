@@ -70,6 +70,8 @@ if ($_SESSION['username'] && $_SESSION['password']) {
                               <li><a href="userdetails"><span class="fa fa-list-alt"></span><span>User Details</span></a></li>
 
                               <li><a href="select" class="active"><span class="fa fa-comments"></span><span>Expiry</span></a></li>
+                              <li><a href="admindetails" ><span class="fas fa-user-edit"></span><span>Admin Details</span></a></li>
+
 
 
 
